@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using AccessData.Entities;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Domain.Entities
@@ -13,5 +14,6 @@ namespace Domain.Entities
         public double TotalDiscount { get; set; }
         public double Taxes { get; set; }
         public DateTime DateTime { get; set; }
+        public ICollection<SaleProduct> SaleProduct { get; set; }
     }
 }

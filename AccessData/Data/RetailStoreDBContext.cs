@@ -6,7 +6,6 @@ namespace AccessData.Data
 {
     public class RetailStoreDBContext : DbContext
     {
-        public RetailStoreDBContext(DbContextOptions<RetailStoreDBContext> dbContextOptions) : base(dbContextOptions) { }
         public DbSet<Category> Category { get; set; }
         public DbSet<Product> Product { get; set; }
         public DbSet<Sale> Sale { get; set; }
