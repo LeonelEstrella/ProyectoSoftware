@@ -2,6 +2,7 @@
 using AccessData.Entities;
 using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 
 namespace AccessData.Data
 {
@@ -14,7 +15,18 @@ namespace AccessData.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=localhost\\SQLEXPRESS;Database=retailStoreDB;Trusted_Connection=True;TrustServerCertificate=true;");
+            if (!optionsBuilder.IsConfigured)
+            {
+
+                IConfigurationRoot configuration = new ConfigurationBuilder()
+                    .SetBasePath(System.IO.Directory.GetCurrentDirectory())
+                    .AddJsonFile("appsettings.json")
+                    .Build();
+
+                string connectionString = configuration.GetConnectionString("DefaultConnection");
+
+                optionsBuilder.UseSqlServer(connectionString);
+            }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

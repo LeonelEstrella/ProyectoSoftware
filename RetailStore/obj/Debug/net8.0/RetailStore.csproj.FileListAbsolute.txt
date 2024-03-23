@@ -133,3 +133,10 @@ C:\Users\LeonelEstrella\Desktop\proyecto sw\Tp1 - Leonel Estrella\RetailStore\Re
 C:\Users\LeonelEstrella\Desktop\proyecto sw\Tp1 - Leonel Estrella\RetailStore\RetailStore\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\LeonelEstrella\Desktop\proyecto sw\Tp1 - Leonel Estrella\RetailStore\RetailStore\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\LeonelEstrella\Desktop\proyecto sw\Tp1 - Leonel Estrella\RetailStore\RetailStore\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\LeonelEstrella\Desktop\proyecto sw\Tp1 - Leonel Estrella\RetailStore\RetailStore\bin\Debug\net8.0\appsettings.json
+C:\Users\LeonelEstrella\Desktop\proyecto sw\Tp1 - Leonel Estrella\RetailStore\RetailStore\bin\Debug\net8.0\Microsoft.Extensions.Configuration.dll
+C:\Users\LeonelEstrella\Desktop\proyecto sw\Tp1 - Leonel Estrella\RetailStore\RetailStore\bin\Debug\net8.0\Microsoft.Extensions.Configuration.FileExtensions.dll
+C:\Users\LeonelEstrella\Desktop\proyecto sw\Tp1 - Leonel Estrella\RetailStore\RetailStore\bin\Debug\net8.0\Microsoft.Extensions.Configuration.Json.dll
+C:\Users\LeonelEstrella\Desktop\proyecto sw\Tp1 - Leonel Estrella\RetailStore\RetailStore\bin\Debug\net8.0\Microsoft.Extensions.FileProviders.Abstractions.dll
+C:\Users\LeonelEstrella\Desktop\proyecto sw\Tp1 - Leonel Estrella\RetailStore\RetailStore\bin\Debug\net8.0\Microsoft.Extensions.FileProviders.Physical.dll
+C:\Users\LeonelEstrella\Desktop\proyecto sw\Tp1 - Leonel Estrella\RetailStore\RetailStore\bin\Debug\net8.0\Microsoft.Extensions.FileSystemGlobbing.dll
