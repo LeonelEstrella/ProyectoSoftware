@@ -4,6 +4,7 @@ using AccessData.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AccessData.Migrations
 {
     [DbContext(typeof(RetailStoreDBContext))]
-    partial class RetailStoreDBContextModelSnapshot : ModelSnapshot
+    [Migration("20240323133929_DataSet")]
+    partial class DataSet
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -73,53 +76,8 @@ namespace AccessData.Migrations
                     b.HasData(
                         new
                         {
-                            CategoryId = 1,
-                            Name = "Electrodomésticos"
-                        },
-                        new
-                        {
-                            CategoryId = 2,
-                            Name = "Tecnología y Electrónica"
-                        },
-                        new
-                        {
                             CategoryId = 3,
                             Name = "Electrodomésticos"
-                        },
-                        new
-                        {
-                            CategoryId = 4,
-                            Name = "Tecnología y Electrónica"
-                        },
-                        new
-                        {
-                            CategoryId = 5,
-                            Name = "Electrodomésticos"
-                        },
-                        new
-                        {
-                            CategoryId = 6,
-                            Name = "Tecnología y Electrónica"
-                        },
-                        new
-                        {
-                            CategoryId = 7,
-                            Name = "Electrodomésticos"
-                        },
-                        new
-                        {
-                            CategoryId = 8,
-                            Name = "Tecnología y Electrónica"
-                        },
-                        new
-                        {
-                            CategoryId = 9,
-                            Name = "Electrodomésticos"
-                        },
-                        new
-                        {
-                            CategoryId = 10,
-                            Name = "Tecnología y Electrónica"
                         });
                 });
 

@@ -1,4 +1,5 @@
-﻿using AccessData.Entities;
+﻿using AccessData.DataSet;
+using AccessData.Entities;
 using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,6 +15,11 @@ namespace AccessData.Data
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer("Server=localhost\\SQLEXPRESS;Database=retailStoreDB;Trusted_Connection=True;TrustServerCertificate=true;");
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfiguration(new CategoryConfiguration());
         }
     }
 }
