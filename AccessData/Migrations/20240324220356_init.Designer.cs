@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AccessData.Migrations
 {
     [DbContext(typeof(RetailStoreDBContext))]
-    [Migration("20240323133929_DataSet")]
-    partial class DataSet
+    [Migration("20240324220356_init")]
+    partial class init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -39,8 +39,8 @@ namespace AccessData.Migrations
                     b.Property<double>("Price")
                         .HasColumnType("float");
 
-                    b.Property<int?>("ProductId")
-                        .HasColumnType("int");
+                    b.Property<Guid?>("ProductId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
@@ -76,18 +76,61 @@ namespace AccessData.Migrations
                     b.HasData(
                         new
                         {
+                            CategoryId = 1,
+                            Name = "Electrodomésticos"
+                        },
+                        new
+                        {
+                            CategoryId = 2,
+                            Name = "Tecnología y Electrónica"
+                        },
+                        new
+                        {
                             CategoryId = 3,
                             Name = "Electrodomésticos"
+                        },
+                        new
+                        {
+                            CategoryId = 4,
+                            Name = "Tecnología y Electrónica"
+                        },
+                        new
+                        {
+                            CategoryId = 5,
+                            Name = "Electrodomésticos"
+                        },
+                        new
+                        {
+                            CategoryId = 6,
+                            Name = "Tecnología y Electrónica"
+                        },
+                        new
+                        {
+                            CategoryId = 7,
+                            Name = "Electrodomésticos"
+                        },
+                        new
+                        {
+                            CategoryId = 8,
+                            Name = "Tecnología y Electrónica"
+                        },
+                        new
+                        {
+                            CategoryId = 9,
+                            Name = "Electrodomésticos"
+                        },
+                        new
+                        {
+                            CategoryId = 10,
+                            Name = "Tecnología y Electrónica"
                         });
                 });
 
             modelBuilder.Entity("Domain.Entities.Product", b =>
                 {
-                    b.Property<int>("ProductId")
+                    b.Property<Guid>("ProductId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProductId"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
@@ -110,6 +153,17 @@ namespace AccessData.Migrations
                     b.HasIndex("CategoryId");
 
                     b.ToTable("Product");
+
+                    b.HasData(
+                        new
+                        {
+                            ProductId = new Guid("74482446-a322-4d66-8d39-23d145a282ec"),
+                            CategoryId = 1,
+                            Description = "Disfrutá de tus alimentos frescos y almacenalos de manera práctica y cómoda en la heladera Drean, la protagonista de la cocina.",
+                            Discount = 31,
+                            Name = "Heladera Drean HDR400F11 steel con freezer 396L 220V",
+                            Price = 1298199.0
+                        });
                 });
 
             modelBuilder.Entity("Domain.Entities.Sale", b =>

@@ -19,7 +19,7 @@ namespace AccessData.DataSet
                 new Category { CategoryId = 8, Name = "Tecnología y Electrónica" },
                 new Category { CategoryId = 9, Name = "Electrodomésticos" },
                 new Category { CategoryId = 10, Name = "Tecnología y Electrónica" }
-                );
+                );           
         }
     }
 }

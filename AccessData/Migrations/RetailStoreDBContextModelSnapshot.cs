@@ -36,8 +36,8 @@ namespace AccessData.Migrations
                     b.Property<double>("Price")
                         .HasColumnType("float");
 
-                    b.Property<int?>("ProductId")
-                        .HasColumnType("int");
+                    b.Property<Guid?>("ProductId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
@@ -125,11 +125,9 @@ namespace AccessData.Migrations
 
             modelBuilder.Entity("Domain.Entities.Product", b =>
                 {
-                    b.Property<int>("ProductId")
+                    b.Property<Guid>("ProductId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProductId"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
@@ -152,6 +150,17 @@ namespace AccessData.Migrations
                     b.HasIndex("CategoryId");
 
                     b.ToTable("Product");
+
+                    b.HasData(
+                        new
+                        {
+                            ProductId = new Guid("74482446-a322-4d66-8d39-23d145a282ec"),
+                            CategoryId = 1,
+                            Description = "Disfrutá de tus alimentos frescos y almacenalos de manera práctica y cómoda en la heladera Drean, la protagonista de la cocina.",
+                            Discount = 31,
+                            Name = "Heladera Drean HDR400F11 steel con freezer 396L 220V",
+                            Price = 1298199.0
+                        });
                 });
 
             modelBuilder.Entity("Domain.Entities.Sale", b =>

@@ -3,6 +3,8 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace AccessData.Migrations
 {
     /// <inheritdoc />
@@ -45,8 +47,7 @@ namespace AccessData.Migrations
                 name: "Product",
                 columns: table => new
                 {
-                    ProductId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ProductId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Price = table.Column<double>(type: "float", nullable: false),
@@ -73,7 +74,7 @@ namespace AccessData.Migrations
                     Quantity = table.Column<int>(type: "int", nullable: false),
                     Price = table.Column<double>(type: "float", nullable: false),
                     Discount = table.Column<int>(type: "int", nullable: false),
-                    ProductId = table.Column<int>(type: "int", nullable: true),
+                    ProductId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     SaleId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
@@ -90,6 +91,28 @@ namespace AccessData.Migrations
                         principalTable: "Sale",
                         principalColumn: "SaleId");
                 });
+
+            migrationBuilder.InsertData(
+                table: "Category",
+                columns: new[] { "CategoryId", "Name" },
+                values: new object[,]
+                {
+                    { 1, "Electrodomésticos" },
+                    { 2, "Tecnología y Electrónica" },
+                    { 3, "Electrodomésticos" },
+                    { 4, "Tecnología y Electrónica" },
+                    { 5, "Electrodomésticos" },
+                    { 6, "Tecnología y Electrónica" },
+                    { 7, "Electrodomésticos" },
+                    { 8, "Tecnología y Electrónica" },
+                    { 9, "Electrodomésticos" },
+                    { 10, "Tecnología y Electrónica" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Product",
+                columns: new[] { "ProductId", "CategoryId", "Description", "Discount", "Name", "Price" },
+                values: new object[] { new Guid("74482446-a322-4d66-8d39-23d145a282ec"), 1, "Disfrutá de tus alimentos frescos y almacenalos de manera práctica y cómoda en la heladera Drean, la protagonista de la cocina.", 31, "Heladera Drean HDR400F11 steel con freezer 396L 220V", 1298199.0 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Product_CategoryId",
