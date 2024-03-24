@@ -16,4 +16,3 @@ C:\Users\LeonelEstrella\Desktop\proyecto sw\Tp1 - Leonel Estrella\RetailStore\Ac
 C:\Users\LeonelEstrella\Desktop\proyecto sw\Tp1 - Leonel Estrella\RetailStore\AccessData\obj\Debug\net8.0\AccessData.pdb
 C:\Users\LeonelEstrella\Desktop\proyecto sw\Tp1 - Leonel Estrella\RetailStore\AccessData\obj\Debug\net8.0\AccessData.genruntimeconfig.cache
 C:\Users\LeonelEstrella\Desktop\proyecto sw\Tp1 - Leonel Estrella\RetailStore\AccessData\obj\Debug\net8.0\ref\AccessData.dll
-C:\Users\LeonelEstrella\Desktop\proyecto sw\Tp1 - Leonel Estrella\RetailStore\AccessData\bin\Debug\net8.0\appsettings.json
