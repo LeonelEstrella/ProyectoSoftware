@@ -14,6 +14,7 @@ namespace Domain.Entities
         public double Price { get; set; }
         public int Discount { get; set; }
         public int CategoryId {  get; set; }
+        public string ImageLink { get; set; }
 
         [ForeignKey("CategoryId")]
         public Category Category { get; set; }
