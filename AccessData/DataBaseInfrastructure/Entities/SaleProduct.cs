@@ -1,8 +1,7 @@
-﻿using Domain.Entities;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace AccessData.Entities
+namespace AccessData.DataBaseInfraestructure.Entities
 {
     public class SaleProduct
     {

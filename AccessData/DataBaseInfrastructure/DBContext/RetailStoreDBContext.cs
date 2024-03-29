@@ -1,10 +1,9 @@
-﻿using AccessData.DataSet;
-using AccessData.Entities;
-using Domain.Entities;
+﻿using AccessData.DataBaseInfraestructure.Entities;
+using AccessData.DataBaseInfraestructure.DataSet;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
-namespace AccessData.Data
+namespace AccessData.DataBaseInfraestructure.DBContext
 {
     public class RetailStoreDBContext : DbContext
     {
@@ -19,7 +18,7 @@ namespace AccessData.Data
             {
 
                 IConfigurationRoot configuration = new ConfigurationBuilder()
-                    .SetBasePath(System.IO.Directory.GetCurrentDirectory())
+                    .SetBasePath(Directory.GetCurrentDirectory())
                     .AddJsonFile("appsettings.json")
                     .Build();
 

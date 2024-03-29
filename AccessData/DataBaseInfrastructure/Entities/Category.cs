@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Domain.Entities
+namespace AccessData.DataBaseInfraestructure.Entities
 {
     public class Category
     {
@@ -9,6 +9,6 @@ namespace Domain.Entities
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int CategoryId { get; set; }
         public required string Name { get; set; }
-        public IList<Product> Products { get; set; } 
+        public IList<Product> Products { get; set; }
     }
 }

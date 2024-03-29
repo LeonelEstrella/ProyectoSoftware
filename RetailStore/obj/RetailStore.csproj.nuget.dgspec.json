@@ -27,11 +27,7 @@
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
-            "projectReferences": {
-              "C:\\Users\\LeonelEstrella\\Desktop\\proyecto sw\\Tp1 - Leonel Estrella\\RetailStore\\Application\\Application.csproj": {
-                "projectPath": "C:\\Users\\LeonelEstrella\\Desktop\\proyecto sw\\Tp1 - Leonel Estrella\\RetailStore\\Application\\Application.csproj"
-              }
-            }
+            "projectReferences": {}
           }
         },
         "warningProperties": {
@@ -129,7 +125,11 @@
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\LeonelEstrella\\Desktop\\proyecto sw\\Tp1 - Leonel Estrella\\RetailStore\\AccessData\\AccessData.csproj": {
+                "projectPath": "C:\\Users\\LeonelEstrella\\Desktop\\proyecto sw\\Tp1 - Leonel Estrella\\RetailStore\\AccessData\\AccessData.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -190,9 +190,6 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\LeonelEstrella\\Desktop\\proyecto sw\\Tp1 - Leonel Estrella\\RetailStore\\AccessData\\AccessData.csproj": {
-                "projectPath": "C:\\Users\\LeonelEstrella\\Desktop\\proyecto sw\\Tp1 - Leonel Estrella\\RetailStore\\AccessData\\AccessData.csproj"
-              },
               "C:\\Users\\LeonelEstrella\\Desktop\\proyecto sw\\Tp1 - Leonel Estrella\\RetailStore\\Application\\Application.csproj": {
                 "projectPath": "C:\\Users\\LeonelEstrella\\Desktop\\proyecto sw\\Tp1 - Leonel Estrella\\RetailStore\\Application\\Application.csproj"
               }

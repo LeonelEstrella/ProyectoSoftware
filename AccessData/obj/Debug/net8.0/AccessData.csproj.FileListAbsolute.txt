@@ -2,15 +2,12 @@ C:\Users\LeonelEstrella\Desktop\proyecto sw\Tp1 - Leonel Estrella\RetailStore\Ac
 C:\Users\LeonelEstrella\Desktop\proyecto sw\Tp1 - Leonel Estrella\RetailStore\AccessData\bin\Debug\net8.0\AccessData.runtimeconfig.json
 C:\Users\LeonelEstrella\Desktop\proyecto sw\Tp1 - Leonel Estrella\RetailStore\AccessData\bin\Debug\net8.0\AccessData.dll
 C:\Users\LeonelEstrella\Desktop\proyecto sw\Tp1 - Leonel Estrella\RetailStore\AccessData\bin\Debug\net8.0\AccessData.pdb
-C:\Users\LeonelEstrella\Desktop\proyecto sw\Tp1 - Leonel Estrella\RetailStore\AccessData\bin\Debug\net8.0\Application.dll
-C:\Users\LeonelEstrella\Desktop\proyecto sw\Tp1 - Leonel Estrella\RetailStore\AccessData\bin\Debug\net8.0\Application.pdb
 C:\Users\LeonelEstrella\Desktop\proyecto sw\Tp1 - Leonel Estrella\RetailStore\AccessData\obj\Debug\net8.0\AccessData.csproj.AssemblyReference.cache
 C:\Users\LeonelEstrella\Desktop\proyecto sw\Tp1 - Leonel Estrella\RetailStore\AccessData\obj\Debug\net8.0\AccessData.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\LeonelEstrella\Desktop\proyecto sw\Tp1 - Leonel Estrella\RetailStore\AccessData\obj\Debug\net8.0\AccessData.AssemblyInfoInputs.cache
 C:\Users\LeonelEstrella\Desktop\proyecto sw\Tp1 - Leonel Estrella\RetailStore\AccessData\obj\Debug\net8.0\AccessData.AssemblyInfo.cs
 C:\Users\LeonelEstrella\Desktop\proyecto sw\Tp1 - Leonel Estrella\RetailStore\AccessData\obj\Debug\net8.0\AccessData.csproj.CoreCompileInputs.cache
 C:\Users\LeonelEstrella\Desktop\proyecto sw\Tp1 - Leonel Estrella\RetailStore\AccessData\obj\Debug\net8.0\AccessData.sourcelink.json
-C:\Users\LeonelEstrella\Desktop\proyecto sw\Tp1 - Leonel Estrella\RetailStore\AccessData\obj\Debug\net8.0\AccessData.csproj.Up2Date
 C:\Users\LeonelEstrella\Desktop\proyecto sw\Tp1 - Leonel Estrella\RetailStore\AccessData\obj\Debug\net8.0\AccessData.dll
 C:\Users\LeonelEstrella\Desktop\proyecto sw\Tp1 - Leonel Estrella\RetailStore\AccessData\obj\Debug\net8.0\refint\AccessData.dll
 C:\Users\LeonelEstrella\Desktop\proyecto sw\Tp1 - Leonel Estrella\RetailStore\AccessData\obj\Debug\net8.0\AccessData.pdb

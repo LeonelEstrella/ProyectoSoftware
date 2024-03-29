@@ -1,8 +1,7 @@
-﻿using AccessData.Entities;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Domain.Entities
+namespace AccessData.DataBaseInfraestructure.Entities
 {
     public class Product
     {
@@ -13,7 +12,7 @@ namespace Domain.Entities
         public string? Description { get; set; }
         public double Price { get; set; }
         public int Discount { get; set; }
-        public int CategoryId {  get; set; }
+        public int CategoryId { get; set; }
         public string ImageLink { get; set; }
 
         [ForeignKey("CategoryId")]

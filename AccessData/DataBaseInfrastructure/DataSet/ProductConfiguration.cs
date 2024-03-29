@@ -1,8 +1,8 @@
-﻿using Domain.Entities;
+﻿using AccessData.DataBaseInfraestructure.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace AccessData.DataSet
+namespace AccessData.DataBaseInfraestructure.DataSet
 {
     public class ProductConfiguration : IEntityTypeConfiguration<Product>
     {

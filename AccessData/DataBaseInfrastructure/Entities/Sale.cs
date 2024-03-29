@@ -1,8 +1,7 @@
-﻿using AccessData.Entities;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Domain.Entities
+namespace AccessData.DataBaseInfraestructure.Entities
 {
     public class Sale
     {
@@ -10,7 +9,7 @@ namespace Domain.Entities
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int SaleId { get; set; }
         public double TotalPay { get; set; }
-        public double Subtotal {  get; set; }
+        public double Subtotal { get; set; }
         public double TotalDiscount { get; set; }
         public double Taxes { get; set; }
         public DateTime DateTime { get; set; }

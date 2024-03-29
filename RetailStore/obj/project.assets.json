@@ -1617,7 +1617,6 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
-          "Application": "1.0.0",
           "Microsoft.EntityFrameworkCore": "8.0.3",
           "Microsoft.EntityFrameworkCore.SqlServer": "8.0.3",
           "Microsoft.Extensions.Configuration": "8.0.0",
@@ -1635,6 +1634,9 @@
       "Application/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "AccessData": "1.0.0"
+        },
         "compile": {
           "bin/placeholder/Application.dll": {}
         },
@@ -4403,7 +4405,6 @@
   },
   "projectFileDependencyGroups": {
     "net8.0": [
-      "AccessData >= 1.0.0",
       "Application >= 1.0.0",
       "Microsoft.EntityFrameworkCore.Design >= 8.0.3"
     ]
@@ -4435,9 +4436,6 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\LeonelEstrella\\Desktop\\proyecto sw\\Tp1 - Leonel Estrella\\RetailStore\\AccessData\\AccessData.csproj": {
-              "projectPath": "C:\\Users\\LeonelEstrella\\Desktop\\proyecto sw\\Tp1 - Leonel Estrella\\RetailStore\\AccessData\\AccessData.csproj"
-            },
             "C:\\Users\\LeonelEstrella\\Desktop\\proyecto sw\\Tp1 - Leonel Estrella\\RetailStore\\Application\\Application.csproj": {
               "projectPath": "C:\\Users\\LeonelEstrella\\Desktop\\proyecto sw\\Tp1 - Leonel Estrella\\RetailStore\\Application\\Application.csproj"
             }

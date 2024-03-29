@@ -15,7 +15,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AccessData\AccessData.csproj" />
     <ProjectReference Include="..\Application\Application.csproj" />
   </ItemGroup>
 
