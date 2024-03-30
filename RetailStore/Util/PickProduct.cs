@@ -9,12 +9,11 @@ namespace RetailStore.Util
     {
         public IList<Product> AddProductToShoppingCart(IProductService productService, IList<ICategoryOptions.Categories> categoryValues, int selectedCategoryIndex, IProductQueries productQueries, IList<Product> buyProductList)
         {
-            bool finishBuy = false;
+            //bool finishBuy = false;
 
-            while (!finishBuy) 
-            {
+            //while (!finishBuy) 
+            //{
                 Console.Clear();
-
                 var selectedCategory = categoryValues[selectedCategoryIndex - 1];
                 var productListByCategory = productService.RetrieveProduct(productQueries, selectedCategory.ToString());
                 Console.WriteLine("Escriba parte del nombre del producto para agregarlo al carrito o pulse ENTER para volver atras:\n");
@@ -22,11 +21,9 @@ namespace RetailStore.Util
                 if (inputString != "")
                 {
                     buyProductList = ChooseProduct(inputString, productListByCategory, buyProductList);
-                    Console.Write("Seleccione una categoría (0 para volver al menú principal): ");
-                    string userInput = Console.ReadLine();
                 }
-                else {finishBuy = true;}              
-            }
+                //else {finishBuy = true;}              
+            //}
 
             return buyProductList;
 

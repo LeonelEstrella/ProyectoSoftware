@@ -18,14 +18,16 @@ namespace RetailStore.MenuBuilder.Classes
         private readonly Sale _sale;
         private readonly ISaleService _saleService;
         private readonly IRegisterSaleQueries _registerSaleQueries;
+        private IList<Product> _bougthProducts;
 
-        public ShowCategoriesOption(IProductService productService, IProductQueries productQueries, IPickProduct pickProduct, ISalesMathematics salesMathematics, IList<Product> productsList, SaleInformation saleInformation, Sale sale, ISaleService saleService, IRegisterSaleQueries registerSaleQueries)
+        public ShowCategoriesOption(IProductService productService, IProductQueries productQueries, IPickProduct pickProduct, ISalesMathematics salesMathematics, IList<Product> productsList, IList<Product> bougthProducts, SaleInformation saleInformation, Sale sale, ISaleService saleService, IRegisterSaleQueries registerSaleQueries)
         {
             _productService = productService;
             _productQueries = productQueries;
             _pickProduct = pickProduct;
             _salesMathematics = salesMathematics;
             _productsList = productsList;
+            _bougthProducts = bougthProducts;
             _saleInformation = saleInformation;
             _sale = sale;
             _saleService = saleService;
@@ -34,28 +36,27 @@ namespace RetailStore.MenuBuilder.Classes
 
         public void Execute()
         {
+            bool finishBuy = false;
+            while (!finishBuy) { 
+
             var categoryValues = ShowCategories.PrintCategories();
 
-            Console.Write("Seleccione una categoría (0 para volver al menú principal): ");
+            Console.Write("Seleccione una categoría (0 para volver al menú principal finalizando compra): ");
             string userInput = Console.ReadLine();
 
             if (int.TryParse(userInput, out int selectedCategoryIndex) && selectedCategoryIndex >= 1 && selectedCategoryIndex <= categoryValues.Count)
             {
-                var bougthProducts = _pickProduct.AddProductToShoppingCart(_productService, categoryValues, selectedCategoryIndex, _productQueries, _productsList);
-                var saleCaculated = _salesMathematics.CalculateSale(bougthProducts, _saleInformation);
-                _sale.Subtotal = saleCaculated.SubTotal;
-                _sale.TotalDiscount = saleCaculated.TotalDiscount;
-                _sale.TotalPay = saleCaculated.TotalPay;
-                _saleService.RegisterSale(_registerSaleQueries, bougthProducts, _sale);
+                _bougthProducts = _pickProduct.AddProductToShoppingCart(_productService, categoryValues, selectedCategoryIndex, _productQueries, _productsList);
+                var saleCaculated = _salesMathematics.CalculateSale(_bougthProducts, _saleInformation);
+                _sale.Subtotal += saleCaculated.SubTotal;
+                _sale.TotalDiscount += saleCaculated.TotalDiscount;
+                _sale.TotalPay += saleCaculated.TotalPay;
+                //_saleService.RegisterSale(_registerSaleQueries, bougthProducts, _sale);
+            }
 
-            }
-            else if (selectedCategoryIndex == 0)
-            {
-                // Volver al menú principal
-            }
-            else
-            {
-                Console.WriteLine("Opción no válida. Intente de nuevo.");
+            else if (selectedCategoryIndex == 0) { _saleService.RegisterSale(_registerSaleQueries, _bougthProducts, _sale); finishBuy = true; }
+
+            else { Console.WriteLine("Opción no válida. Intente de nuevo."); }
             }
 
             _productsList.Clear();

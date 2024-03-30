@@ -20,12 +20,13 @@ ISaleService saleService = new SaleService();
 ISalesMathematics salesMathematics = new SalesMathematics();
 SaleInformation saleInformation = new SaleInformation();
 IList<Product> productList = new List<Product>();
+IList<Product> bougthProducts = new List<Product>();
 Sale sale = new Sale();
 
 IMenuOption[] menuOptions = new IMenuOption[]
         {
             new ProductListOption(),
-            new ShowCategoriesOption(productService, productQueries, pickProduct, salesMathematics ,productList, saleInformation, sale, saleService, registerSaleQueries),
+            new ShowCategoriesOption(productService, productQueries, pickProduct, salesMathematics ,productList, bougthProducts, saleInformation, sale, saleService, registerSaleQueries),
             new ExitOption()
             
         };
