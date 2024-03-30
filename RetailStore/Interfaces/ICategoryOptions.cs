@@ -1,6 +1,6 @@
 ﻿using System.Runtime.Serialization;
 
-namespace RetailStore.MenuBuilder.Interfaces
+namespace RetailStore.Interfaces
 {
     public interface ICategoryOptions
     {

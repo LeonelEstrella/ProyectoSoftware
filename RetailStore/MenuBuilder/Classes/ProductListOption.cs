@@ -1,4 +1,4 @@
-﻿using RetailStore.MenuBuilder.Interfaces;
+﻿using RetailStore.Interfaces;
 
 namespace RetailStore.Menu.Classes
 {

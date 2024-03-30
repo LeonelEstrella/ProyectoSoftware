@@ -5,6 +5,6 @@ namespace Application.Interfaces
 {
     public interface IProductService
     {
-        List<Product> RetrieveProduct(IProductQueries productService, string categoryName);
+        List<Product> RetrieveProduct(IProductQueries productQueries, string categoryName);
     }
 }

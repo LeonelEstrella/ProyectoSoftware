@@ -1,5 +1,6 @@
 ﻿using AccessData.DataBaseInfraestructure.DBContext;
 using AccessData.DataBaseInfraestructure.Entities;
+using AccessData.Interfaces;
 using AccessData.Queries;
 using Application.Common;
 using Application.Interfaces;
@@ -8,15 +9,16 @@ using Application.Util;
 using RetailStore.Interfaces;
 using RetailStore.Menu.Classes;
 using RetailStore.MenuBuilder.Classes;
-using RetailStore.MenuBuilder.Interfaces;
 using RetailStore.Util;
 
 RetailStoreDBContext retailStoreDBContext = new RetailStoreDBContext();
-ProductQueries accessDataProductService = new ProductQueries(retailStoreDBContext);
-ProductService applicationProductService = new ProductService();
+IProductQueries productQueries = new ProductQueries(retailStoreDBContext);
+IProductService productService = new ProductService();
+IRegisterSaleQueries registerSaleQueries = new RegisterSaleQueries(retailStoreDBContext);
 IPickProduct pickProduct = new PickProduct();
+ISaleService saleService = new SaleService();
 List<Product> productList = new List<Product>();
-
+Sale sale = new Sale();
 
 //Testeo de maths
 List<Product> productsList = new List<Product> {  new Product { ProductId = Guid.NewGuid(), Name = "Heladera Drean HDR400F11 steel con freezer 396L 220V", Description = "Disfrutá de tus alimentos frescos y almacenalos de manera práctica y cómoda en la heladera Drean, la protagonista de la cocina.", Price = 1298199, CategoryId = 1, Discount = 31, ImageLink = "https://http2.mlstatic.com/D_NQ_NP_661063-MLU74118278062_012024-O.webp" },
@@ -27,12 +29,12 @@ List<Product> productsList = new List<Product> {  new Product { ProductId = Guid
 
 ISalesMathematics salesMathematics = new SalesMathematics();
 SaleInformation saleInformation = new SaleInformation();
-var test = salesMathematics.CalculateSale(productsList, saleInformation);
+//var test = salesMathematics.CalculateSale(productsList, saleInformation);
 
 IMenuOption[] menuOptions = new IMenuOption[]
         {
             new ProductListOption(),
-            new ShowCategoriesOption(applicationProductService, accessDataProductService, pickProduct, productList),
+            new ShowCategoriesOption(productService, productQueries, pickProduct, salesMathematics ,productList, saleInformation, sale, saleService, registerSaleQueries),
             new ExitOption()
             
         };

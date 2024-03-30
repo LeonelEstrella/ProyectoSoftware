@@ -1,4 +1,4 @@
-﻿namespace RetailStore.MenuBuilder.Interfaces
+﻿namespace RetailStore.Interfaces
 {
     public interface IMenuOption
     {

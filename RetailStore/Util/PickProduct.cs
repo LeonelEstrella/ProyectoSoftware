@@ -2,18 +2,40 @@
 using AccessData.Interfaces;
 using Application.Interfaces;
 using RetailStore.Interfaces;
-using RetailStore.MenuBuilder.Interfaces;
 
 namespace RetailStore.Util
 {
     public class PickProduct : IPickProduct
     {
-        public  void AddProductToShoppingCart(IProductService productService, List<ICategoryOptions.Categories> categoryValues, int selectedCategoryIndex, IProductQueries productQueries, List<Product> productList)
+        public List<Product> AddProductToShoppingCart(IProductService productService, List<ICategoryOptions.Categories> categoryValues, int selectedCategoryIndex, IProductQueries productQueries, List<Product> buyProductList)
         {
-            Console.Clear();
-            Console.WriteLine("Escriba parte o el nombre del producto para agregar al carrito:\n");
-            var selectedCategory = categoryValues[selectedCategoryIndex - 1];
-            productService.RetrieveProduct(productQueries, selectedCategory.ToString());
+            bool finishBuy = false;
+
+            while (!finishBuy) 
+            {
+                Console.Clear();
+                Console.WriteLine("Escriba parte del nombre del producto para agregarlo al carrito o pulse ENTER para volver atras:\n");
+                var selectedCategory = categoryValues[selectedCategoryIndex - 1];
+                string inputString = Console.ReadLine();
+                if (inputString != "")
+                {
+                    buyProductList = ChooseProduct(inputString, productService.RetrieveProduct(productQueries, selectedCategory.ToString()), buyProductList);
+                }
+                else {finishBuy = true;}              
+            }
+
+            return buyProductList;
+
+        }
+
+        private List<Product> ChooseProduct(string productName, List<Product> productList, List<Product> buyProductList)
+        {
+            foreach (var product in productList)
+            {
+                if (product.Name == productName) buyProductList.Add(product);
+            }
+
+            return buyProductList;
         }
     }
 }

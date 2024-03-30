@@ -6,9 +6,9 @@ namespace Application.Services
 {
     public class ProductService : IProductService
     {
-        public List<Product>  RetrieveProduct(IProductQueries productService, string categoryName)
+        public List<Product> RetrieveProduct(IProductQueries productQueries, string categoryName)
         {
-            return productService.RetrieveProducts(categoryName);
+            return productQueries.RetrieveProducts(categoryName);
         }
     }
 }
