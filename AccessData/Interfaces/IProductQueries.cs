@@ -1,7 +1,9 @@
-﻿namespace AccessData.Interfaces
+﻿using AccessData.DataBaseInfraestructure.Entities;
+
+namespace AccessData.Interfaces
 {
     public interface IProductQueries
     {
-        public void RetrieveProducts(string categoryName);
+        public List<Product> RetrieveProducts(string categoryName);
     }
 }

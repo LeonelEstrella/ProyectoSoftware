@@ -1,5 +1,5 @@
 ﻿using AccessData.DataBaseInfraestructure.Entities;
-using Application.Common;
+using Application.Util;
 
 namespace Application.Interfaces
 {

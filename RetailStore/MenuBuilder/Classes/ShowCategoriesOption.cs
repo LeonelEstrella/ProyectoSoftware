@@ -1,42 +1,38 @@
 ﻿using AccessData.DataBaseInfraestructure.Entities;
 using AccessData.Interfaces;
-using AccessData.Queries;
+using Application.Interfaces;
 using Application.Services;
+using RetailStore.Interfaces;
 using RetailStore.MenuBuilder.Interfaces;
+using RetailStore.Util;
 
 namespace RetailStore.MenuBuilder.Classes
 {
-    public class ShowCategoriesOption : IMenuOption, ICategoryOptions
+    public class ShowCategoriesOption : IMenuOption 
     {
-        private readonly ProductService _applicationProductService;
+        private readonly IProductService _productService;
         private readonly IProductQueries _productQueries;
+        private readonly List<Product> _productsList;
+        private readonly IPickProduct _pickProduct;
 
-        public ShowCategoriesOption(ProductService applicationProductService, IProductQueries productQueries)
+        public ShowCategoriesOption(IProductService productService, IProductQueries productQueries, IPickProduct pickProduct, List<Product> productsList)
         {
-            _applicationProductService = applicationProductService;
+            _productService = productService;
             _productQueries = productQueries;
+            _productsList = productsList;
+            _pickProduct = pickProduct;
         }
 
         public void Execute()
         {
-            var categoryValues = Enum.GetValues(typeof(ICategoryOptions.Categories)).Cast<ICategoryOptions.Categories>().ToArray();
-            Console.Clear();
-            Console.WriteLine("Categorías:");
-            for (int i = 0; i < categoryValues.Length; i++)
-            {
-                var category = (ICategoryOptions.Categories)categoryValues.GetValue(i);
-                Console.WriteLine(i+1 + " - " + category);
-            }
+            var categoryValues = ShowCategories.PrintCategories();
 
             Console.Write("Seleccione una categoría (0 para volver al menú principal): ");
             string userInput = Console.ReadLine();
 
-            if (int.TryParse(userInput, out int selectedCategoryIndex) && selectedCategoryIndex >= 1 && selectedCategoryIndex <= categoryValues.Length)
+            if (int.TryParse(userInput, out int selectedCategoryIndex) && selectedCategoryIndex >= 1 && selectedCategoryIndex <= categoryValues.Count)
             {
-                Console.Clear();
-                Console.WriteLine("Escriba parte o el nombre del producto para agregar al carrito:\n");
-                var selectedCategory = categoryValues[selectedCategoryIndex-1];
-                _applicationProductService.RetrieveProduct(_productQueries, selectedCategory.ToString());
+                _pickProduct.AddProductToShoppingCart(_productService,categoryValues,selectedCategoryIndex,_productQueries, _productsList);              
             }
             else if (selectedCategoryIndex == 0)
             {

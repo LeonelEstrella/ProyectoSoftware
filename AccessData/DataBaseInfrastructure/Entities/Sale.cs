@@ -8,10 +8,10 @@ namespace AccessData.DataBaseInfraestructure.Entities
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int SaleId { get; set; }
-        public double TotalPay { get; set; }
-        public double Subtotal { get; set; }
-        public double TotalDiscount { get; set; }
-        public double Taxes { get; set; }
+        public decimal TotalPay { get; set; }
+        public decimal Subtotal { get; set; }
+        public decimal TotalDiscount { get; set; }
+        public decimal Taxes { get; set; }
         public DateTime DateTime { get; set; }
         public ICollection<SaleProduct> SaleProduct { get; set; }
     }

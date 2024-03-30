@@ -1,12 +1,14 @@
-﻿using AccessData.Interfaces;
+﻿using AccessData.DataBaseInfraestructure.Entities;
+using AccessData.Interfaces;
+using Application.Interfaces;
 
 namespace Application.Services
 {
-    public class ProductService
+    public class ProductService : IProductService
     {
-        public void  RetrieveProduct(IProductQueries productService, string categoryName)
+        public List<Product>  RetrieveProduct(IProductQueries productService, string categoryName)
         {
-            productService.RetrieveProducts(categoryName);
+            return productService.RetrieveProducts(categoryName);
         }
     }
 }

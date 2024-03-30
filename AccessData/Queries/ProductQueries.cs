@@ -1,5 +1,6 @@
 ﻿using AccessData.Common;
 using AccessData.DataBaseInfraestructure.DBContext;
+using AccessData.DataBaseInfraestructure.Entities;
 using AccessData.Interfaces;
 
 namespace AccessData.Queries
@@ -10,34 +11,36 @@ namespace AccessData.Queries
         {
         }
 
-        public void RetrieveProducts(string categoryName)
+        public List<Product> RetrieveProducts(string categoryName)
         {       
             var producCategorytList = _context.Product
                     .Join(
                     _context.Category.Where( c => c.Name == categoryName ),
                     product => product.CategoryId,
                     category => category.CategoryId,
-                    (product, category) => new
+                    (product, category) => new Product
                     {
-                        ProductID = product.ProductId,
-                        ProductName = product.Name,
-                        ProductDescription = product.Description,
-                        ProductPrice = product.Price,
-                        ProductDiscount = product.Discount,
-                        ProductCategory = category,
-                        ProductImageLink = product.ImageLink
+                        ProductId = product.ProductId,
+                        Name = product.Name,
+                        Description = product.Description,
+                        Price = product.Price,
+                        Discount = product.Discount,
+                        Category = category,
+                        ImageLink = product.ImageLink
                     }).ToList();
 
             foreach (var product in producCategorytList)
             {
-                Console.WriteLine($"ProductID: {product.ProductID}");
-                Console.WriteLine($"Name: {product.ProductName}");
-                Console.WriteLine($"Description: {product.ProductDescription}");
-                Console.WriteLine($"Price: {product.ProductPrice}");
-                Console.WriteLine($"Discount: {product.ProductDiscount}");
-                Console.WriteLine($"Category: {product.ProductCategory.Name}");
+                Console.WriteLine($"ProductID: {product.ProductId}");
+                Console.WriteLine($"Name: {product.Name}");
+                Console.WriteLine($"Description: {product.Description}");
+                Console.WriteLine($"Price: {product.Price}");
+                Console.WriteLine($"Discount: {product.Discount}");
+                Console.WriteLine($"Category: {product.Category.Name}");
                 Console.WriteLine(new string('-', Console.WindowWidth - 1));
             }
+
+            return producCategorytList;
 
         }
     }

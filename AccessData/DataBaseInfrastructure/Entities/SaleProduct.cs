@@ -9,7 +9,7 @@ namespace AccessData.DataBaseInfraestructure.Entities
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int SaleProductId { get; set; }
         public int Quantity { get; set; }
-        public double Price { get; set; }
+        public decimal Price { get; set; }
         public int Discount { get; set; }
     }
 }
