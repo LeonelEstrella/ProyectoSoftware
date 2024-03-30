@@ -6,6 +6,6 @@ namespace RetailStore.Interfaces
 {
     public interface IPickProduct
     {
-       public List<Product> AddProductToShoppingCart(IProductService productService, List<ICategoryOptions.Categories> categoryValues, int selectedCategoryIndex, IProductQueries productQueries, List<Product> productList);
+       public IList<Product> AddProductToShoppingCart(IProductService productService, IList<ICategoryOptions.Categories> categoryValues, int selectedCategoryIndex, IProductQueries productQueries, IList<Product> productList);
     }
 }

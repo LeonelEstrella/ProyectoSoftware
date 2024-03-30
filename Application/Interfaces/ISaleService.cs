@@ -5,6 +5,6 @@ namespace Application.Interfaces
 {
     public interface ISaleService
     {
-        void RegisterSale(IRegisterSaleQueries registerSaleQueries ,List<Product> productList, Sale sale);
+        void RegisterSale(IRegisterSaleQueries registerSaleQueries , IList<Product> productList, Sale sale);
     }
 }

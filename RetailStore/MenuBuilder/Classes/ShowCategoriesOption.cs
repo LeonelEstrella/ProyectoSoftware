@@ -13,13 +13,13 @@ namespace RetailStore.MenuBuilder.Classes
         private readonly IProductQueries _productQueries;
         private readonly IPickProduct _pickProduct;
         private readonly ISalesMathematics _salesMathematics;
-        private readonly List<Product> _productsList;
+        private readonly IList<Product> _productsList;
         private readonly SaleInformation _saleInformation;
         private readonly Sale _sale;
         private readonly ISaleService _saleService;
         private readonly IRegisterSaleQueries _registerSaleQueries;
 
-        public ShowCategoriesOption(IProductService productService, IProductQueries productQueries, IPickProduct pickProduct, ISalesMathematics salesMathematics, List<Product> productsList, SaleInformation saleInformation, Sale sale, ISaleService saleService, IRegisterSaleQueries registerSaleQueries)
+        public ShowCategoriesOption(IProductService productService, IProductQueries productQueries, IPickProduct pickProduct, ISalesMathematics salesMathematics, IList<Product> productsList, SaleInformation saleInformation, Sale sale, ISaleService saleService, IRegisterSaleQueries registerSaleQueries)
         {
             _productService = productService;
             _productQueries = productQueries;
@@ -41,7 +41,7 @@ namespace RetailStore.MenuBuilder.Classes
 
             if (int.TryParse(userInput, out int selectedCategoryIndex) && selectedCategoryIndex >= 1 && selectedCategoryIndex <= categoryValues.Count)
             {
-                var bougthProducts = _pickProduct.AddProductToShoppingCart( _productService, categoryValues, selectedCategoryIndex, _productQueries, _productsList );
+                var bougthProducts = _pickProduct.AddProductToShoppingCart(_productService, categoryValues, selectedCategoryIndex, _productQueries, _productsList);
                 var saleCaculated = _salesMathematics.CalculateSale(bougthProducts, _saleInformation);
                 _sale.Subtotal = saleCaculated.SubTotal;
                 _sale.TotalDiscount = saleCaculated.TotalDiscount;
