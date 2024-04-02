@@ -7,32 +7,33 @@ namespace RetailStore.Util
 {
     public class PickProduct : IPickProduct
     {
-        public List<Product> AddProductToShoppingCart(IProductService productService, List<ICategoryOptions.Categories> categoryValues, int selectedCategoryIndex, IProductQueries productQueries, List<Product> buyProductList)
+        public IList<Product> AddProductToShoppingCart(IProductService productService, IList<ICategoryOptions.Categories> categoryValues, int selectedCategoryIndex, IProductQueries productQueries, IList<Product> buyProductList)
         {
-            bool finishBuy = false;
+            //bool finishBuy = false;
 
-            while (!finishBuy) 
-            {
+            //while (!finishBuy) 
+            //{
                 Console.Clear();
-                Console.WriteLine("Escriba parte del nombre del producto para agregarlo al carrito o pulse ENTER para volver atras:\n");
                 var selectedCategory = categoryValues[selectedCategoryIndex - 1];
+                var productListByCategory = productService.RetrieveProduct(productQueries, selectedCategory.ToString());
+                Console.WriteLine("Escriba parte del nombre del producto para agregarlo al carrito o pulse ENTER para volver atras:\n");
                 string inputString = Console.ReadLine();
                 if (inputString != "")
                 {
-                    buyProductList = ChooseProduct(inputString, productService.RetrieveProduct(productQueries, selectedCategory.ToString()), buyProductList);
+                    buyProductList = ChooseProduct(inputString, productListByCategory, buyProductList);
                 }
-                else {finishBuy = true;}              
-            }
+                //else {finishBuy = true;}              
+            //}
 
             return buyProductList;
 
         }
 
-        private List<Product> ChooseProduct(string productName, List<Product> productList, List<Product> buyProductList)
+        private IList<Product> ChooseProduct(string productName, IList<Product> productList, IList<Product> buyProductList)
         {
             foreach (var product in productList)
             {
-                if (product.Name == productName) buyProductList.Add(product);
+                if (product.Name.ToLower().Contains(productName.ToLower())) buyProductList.Add(product);
             }
 
             return buyProductList;

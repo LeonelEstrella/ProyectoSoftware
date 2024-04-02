@@ -13,7 +13,7 @@ namespace AccessData.Queries
         {
         }
 
-        public void RegisterSale(List<Product> productList, Sale sale)
+        public void RegisterSale(IList<Product> productList, Sale sale)
         {
             var newSale = new Sale
             {
@@ -28,14 +28,15 @@ namespace AccessData.Queries
 
             foreach (var singleProduct in productList) 
             {
-                var product = _context.Product.FirstOrDefault(p => p.Name.Contains(singleProduct.Name));
+                var product = _context.Product.FirstOrDefault(p => p.ProductId == singleProduct.ProductId);
 
                 if (product != null)
                 {
                     //var existingSaleProduct = newSale.SaleProduct.FirstOrDefault(sp => sp. == product.ProductId);
 
                     var saleProduct = new SaleProduct
-                    {
+                    {   
+                        ProductId = singleProduct.ProductId,
                         Quantity = 1,
                         Price = product.Price,
                         Discount = product.Discount

@@ -8,8 +8,12 @@ namespace AccessData.DataBaseInfraestructure.Entities
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int SaleProductId { get; set; }
+        public Guid ProductId {  get; set; } 
         public int Quantity { get; set; }
         public decimal Price { get; set; }
         public int Discount { get; set; }
+
+        [ForeignKey("ProductId")]
+        public Product Product { get; set; }
     }
 }
