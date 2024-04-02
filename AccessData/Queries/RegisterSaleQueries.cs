@@ -1,4 +1,4 @@
-﻿using AccessData.Common;
+﻿using AccessData.Util;
 using AccessData.DataBaseInfraestructure.DBContext;
 using AccessData.DataBaseInfraestructure.Entities;
 using AccessData.Interfaces;
@@ -32,23 +32,30 @@ namespace AccessData.Queries
 
                 if (product != null)
                 {
-                    //var existingSaleProduct = newSale.SaleProduct.FirstOrDefault(sp => sp. == product.ProductId);
+                    var existingSaleProduct = newSale.SaleProduct.FirstOrDefault(sp => sp.ProductId == product.ProductId);
 
-                    var saleProduct = new SaleProduct
-                    {   
-                        ProductId = singleProduct.ProductId,
-                        Quantity = 1,
-                        Price = product.Price,
-                        Discount = product.Discount
-                    };
+                    if (existingSaleProduct != null)
+                    {
+                        existingSaleProduct.Quantity++;
+                    }
 
-                    newSale.SaleProduct.Add(saleProduct);
+                    else
+                    {
+                        var saleProduct = new SaleProduct
+                        {
+                            ProductId = singleProduct.ProductId,
+                            Quantity = 1,
+                            Price = product.Price,
+                            Discount = product.Discount
+                        };
+
+                        newSale.SaleProduct.Add(saleProduct);
+                    }
                 }
             }
 
             _context.Sale.Add(newSale);
             _context.SaveChanges();
-            //_context.SaleProduct.Add(newSale.SaleProduct);
         }
     }
 }

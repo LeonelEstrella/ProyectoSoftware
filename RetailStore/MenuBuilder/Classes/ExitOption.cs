@@ -6,7 +6,7 @@ namespace RetailStore.MenuBuilder.Classes
     {
         public void Execute()
         {
-            // No se necesita lógica para la opción de salida
+            Console.WriteLine("Vuelve a presionar enter para salir.");
         }
     }
 }

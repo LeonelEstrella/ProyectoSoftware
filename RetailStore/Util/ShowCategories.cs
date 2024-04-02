@@ -7,8 +7,11 @@ namespace RetailStore.Util
         public static List<ICategoryOptions.Categories> PrintCategories()
         {
             var categoryValues = Enum.GetValues(typeof(ICategoryOptions.Categories)).Cast<ICategoryOptions.Categories>().ToList();
+            
             Console.Clear();
             Console.WriteLine("Categorías:");
+            Console.WriteLine();
+
             for (int i = 0; i < categoryValues.Count; i++)
             {
                 var category = categoryValues[i];

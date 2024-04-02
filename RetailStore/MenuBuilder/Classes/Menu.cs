@@ -19,10 +19,9 @@ namespace RetailStore.MenuBuilder.Classes
             {
                 Console.Clear();
                 Console.WriteLine("Main Menu");
-                Console.WriteLine("1. Ver lista de productos");
-                Console.WriteLine("2. Comprar");
-                Console.WriteLine("3. Salir");
-                Console.Write("Seleccione una opción: ");
+                Console.WriteLine("1. Comprar");
+                Console.WriteLine("2. Salir");
+                Console.Write("Seleccione una opción escribiendo '1' para comprar o '2' para salir del programa: ");
 
                 string userInput = Console.ReadLine();
 
@@ -37,7 +36,8 @@ namespace RetailStore.MenuBuilder.Classes
                 }
                 else
                 {
-                    Console.WriteLine("Opción no válida. Intente de nuevo.");
+                    Console.WriteLine("Opción no válida. Intente de nuevo. Pulse cualquier tecla para continuar.");
+                    Console.ReadKey();
                 }
             }
         }

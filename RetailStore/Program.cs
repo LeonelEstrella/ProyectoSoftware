@@ -7,7 +7,6 @@ using Application.Interfaces;
 using Application.Services;
 using Application.Util;
 using RetailStore.Interfaces;
-using RetailStore.Menu.Classes;
 using RetailStore.MenuBuilder.Classes;
 using RetailStore.Util;
 
@@ -25,7 +24,6 @@ Sale sale = new Sale();
 
 IMenuOption[] menuOptions = new IMenuOption[]
         {
-            new ProductListOption(),
             new ShowCategoriesOption(productService, productQueries, pickProduct, salesMathematics ,productList, bougthProducts, saleInformation, sale, saleService, registerSaleQueries),
             new ExitOption()
             

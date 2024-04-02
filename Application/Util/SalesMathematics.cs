@@ -7,17 +7,15 @@ namespace Application.Common
     public class SalesMathematics : ISalesMathematics
     {
         const decimal TAXES = 1.21m;
-        public SaleInformation CalculateSale(IList<Product> products, SaleInformation saleInformation)
+        public SaleInformation CalculateSale(Product lastBougthProduct, SaleInformation saleInformation)
         {
             saleInformation.SubTotal = 0;
             saleInformation.TotalDiscount = 0;
+            saleInformation.TotalPay = 0;
 
-            foreach (Product product in products)
-            {
-                saleInformation.SubTotal += product.Price;
+            saleInformation.SubTotal += lastBougthProduct.Price;
 
-                if (product.Discount != 0) saleInformation.TotalDiscount += product.Price - (product.Price * (1 -  (product.Discount / 100M)));
-            }
+            if (lastBougthProduct.Discount != 0) saleInformation.TotalDiscount += lastBougthProduct.Price - (lastBougthProduct.Price * (1 -  (lastBougthProduct.Discount / 100M)));
 
             saleInformation.TotalPay = (saleInformation.SubTotal - saleInformation.TotalDiscount) * TAXES;
 

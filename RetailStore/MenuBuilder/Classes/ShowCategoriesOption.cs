@@ -37,26 +37,35 @@ namespace RetailStore.MenuBuilder.Classes
         public void Execute()
         {
             bool finishBuy = false;
-            while (!finishBuy) { 
 
-            var categoryValues = ShowCategories.PrintCategories();
-
-            Console.Write("Seleccione una categoría (0 para volver al menú principal finalizando compra): ");
-            string userInput = Console.ReadLine();
-
-            if (int.TryParse(userInput, out int selectedCategoryIndex) && selectedCategoryIndex >= 1 && selectedCategoryIndex <= categoryValues.Count)
+            while (!finishBuy) 
+            
             {
-                _bougthProducts = _pickProduct.AddProductToShoppingCart(_productService, categoryValues, selectedCategoryIndex, _productQueries, _productsList);
-                var saleCaculated = _salesMathematics.CalculateSale(_bougthProducts, _saleInformation);
-                _sale.Subtotal += saleCaculated.SubTotal;
-                _sale.TotalDiscount += saleCaculated.TotalDiscount;
-                _sale.TotalPay += saleCaculated.TotalPay;
-                //_saleService.RegisterSale(_registerSaleQueries, bougthProducts, _sale);
-            }
+                var boughtProductsBefore = _bougthProducts.Count;
+                var categoryValues = ShowCategories.PrintCategories();
 
-            else if (selectedCategoryIndex == 0) { _saleService.RegisterSale(_registerSaleQueries, _bougthProducts, _sale); finishBuy = true; }
+                Console.WriteLine();
+                Console.Write("Seleccione una categoría (0 para volver al menú principal finalizando compra): ");
+                Console.WriteLine();
+                string userInput = Console.ReadLine();
 
-            else { Console.WriteLine("Opción no válida. Intente de nuevo."); }
+                if (int.TryParse(userInput, out int selectedCategoryIndex) && selectedCategoryIndex >= 1 && selectedCategoryIndex <= categoryValues.Count)
+                {
+                    _bougthProducts = _pickProduct.AddProductToShoppingCart(_productService, categoryValues, selectedCategoryIndex, _productQueries, _productsList);
+
+                    if (_bougthProducts.Count > boughtProductsBefore) 
+                    {
+                        var saleCaculated = _salesMathematics.CalculateSale(_bougthProducts[_bougthProducts.Count-1], _saleInformation);
+                        _sale.Subtotal += saleCaculated.SubTotal;
+                        _sale.TotalDiscount += saleCaculated.TotalDiscount;
+                        _sale.TotalPay += saleCaculated.TotalPay;
+                    }
+                    
+                }
+
+                else if (selectedCategoryIndex == 0) { _saleService.RegisterSale(_registerSaleQueries, _bougthProducts, _sale); finishBuy = true; }
+
+                else { Console.WriteLine("Opción no válida. Intente de nuevo."); }
             }
 
             _productsList.Clear();
