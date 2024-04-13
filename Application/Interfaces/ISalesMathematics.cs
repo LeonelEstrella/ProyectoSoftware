@@ -5,6 +5,6 @@ namespace Application.Interfaces
 {
     public interface ISalesMathematics
     {
-        public SaleInformation CalculateSale(IList<Product> products, SaleInformation saleInformation);
+        public SaleInformation CalculateSale(Product product, SaleInformation saleInformation);
     }
 }

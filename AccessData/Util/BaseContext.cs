@@ -1,6 +1,6 @@
 ﻿using AccessData.DataBaseInfraestructure.DBContext;
 
-namespace AccessData.Common
+namespace AccessData.Util
 {
     public class BaseContext
     {

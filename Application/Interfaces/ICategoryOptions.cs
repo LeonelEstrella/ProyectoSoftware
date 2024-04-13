@@ -1,6 +1,4 @@
-﻿using System.Runtime.Serialization;
-
-namespace RetailStore.Interfaces
+﻿namespace Application.Interfaces
 {
     public interface ICategoryOptions
     {
