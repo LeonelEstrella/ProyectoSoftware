@@ -38,8 +38,8 @@ namespace RetailStore.MenuBuilder.Classes
         {
             bool finishBuy = false;
 
-            while (!finishBuy) 
-            
+            while (!finishBuy)
+
             {
                 var boughtProductsBefore = _bougthProducts.Count;
                 var categoryValues = ShowCategories.PrintCategories();
@@ -53,22 +53,35 @@ namespace RetailStore.MenuBuilder.Classes
                 {
                     _bougthProducts = _pickProduct.AddProductToShoppingCart(_productService, categoryValues, selectedCategoryIndex, _productQueries, _productsList);
 
-                    if (_bougthProducts.Count > boughtProductsBefore) 
+                    if (_bougthProducts.Count > boughtProductsBefore)
                     {
-                        var saleCaculated = _salesMathematics.CalculateSale(_bougthProducts[_bougthProducts.Count-1], _saleInformation);
+                        var saleCaculated = _salesMathematics.CalculateSale(_bougthProducts[_bougthProducts.Count - 1], _saleInformation);
                         _sale.Subtotal += saleCaculated.SubTotal;
                         _sale.TotalDiscount += saleCaculated.TotalDiscount;
                         _sale.TotalPay += saleCaculated.TotalPay;
                     }
-                    
+
                 }
 
-                else if (selectedCategoryIndex == 0) { _saleService.RegisterSale(_registerSaleQueries, _bougthProducts, _sale); finishBuy = true; }
+                else if (selectedCategoryIndex == 0 && _bougthProducts.Count > 0) 
+                { 
+                    _saleService.RegisterSale(_registerSaleQueries, _bougthProducts, _sale); 
+                    finishBuy = true; 
+                }
+
+                else if (selectedCategoryIndex == 0 && _bougthProducts.Count == 0) 
+                { 
+                    Console.WriteLine("Se finalizó la compra sin ningún producto en el carrito."); 
+                    finishBuy = true; 
+                }
 
                 else { Console.WriteLine("Opción no válida. Intente de nuevo."); }
             }
 
             _productsList.Clear();
+            _sale.Subtotal = 0;
+            _sale.TotalDiscount = 0;
+            _sale.TotalPay = 0;
             Console.WriteLine("Presione cualquier tecla para volver al menú principal...");
             Console.ReadKey();
         }

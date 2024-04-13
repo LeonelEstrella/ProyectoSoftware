@@ -22,20 +22,30 @@ namespace RetailStore.Util
                 buyProductList = ChooseProduct(inputString, productListByCategory, buyProductList);
             }
 
-            else { Console.WriteLine("Producto no encontrado - No se ingreso el mínimo de palabras requerido"); Thread.Sleep(2000); }
+            else { Console.WriteLine("No se ingreso el mínimo de palabras requerido"); Thread.Sleep(2000); }
 
             return buyProductList;
         }
 
         private IList<Product> ChooseProduct(string productName, IList<Product> productList, IList<Product> buyProductList)
         {
+            var currentlyBuyProductList = buyProductList.Count; 
+
             foreach (var product in productList)
             {
-                if (product.Name.ToLower().Contains(productName.ToLower())) buyProductList.Add(product);
+                if (product.Name.ToLower().Contains(productName.ToLower()))
+                {
+                    buyProductList.Add(product);
+                    Console.WriteLine("Producto agregado al carrito!");
+                    Thread.Sleep(700);
+                }
             }
 
-            Console.WriteLine("Producto agregado al carrito!");
-            Thread.Sleep(700);
+            if (currentlyBuyProductList == buyProductList.Count) 
+            { 
+                Console.WriteLine("No se agregó ningún producto al carrito. Intente ingresar correctament el nombre del producto.");
+                Thread.Sleep(700);
+            }
 
             return buyProductList;
         }
