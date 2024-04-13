@@ -33,7 +33,7 @@ bld/
 [Ll]ogs/
 
 # Visual Studio 2015/2017 cache/options directory
-.vs/
+*.vs/
 # Uncomment if you have tasks that create the project's static files in wwwroot
 #wwwroot/
 
@@ -377,7 +377,7 @@ MigrationBackup/
 FodyWeavers.xsd
 
 # VS Code files for those working on multiple tools
-.vs/
+*.vs/
 .vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json
@@ -395,7 +395,24 @@ FodyWeavers.xsd
 *.msm
 *.msp
 
-*.vs
-
 # JetBrains Rider
 *.sln.iml
+
+# Carpeta de resultados de compilación
+obj/
+
+# Archivos específicos dentro de la carpeta obj que pueden ser ignorados
+obj/*.dll
+obj/*.exe
+obj/*.pdb
+obj/*.user
+obj/*.suo
+obj/*.cache
+obj/*.log
+obj/**/*.dll
+obj/**/*.exe
+obj/**/*.pdb
+obj/**/*.user
+obj/**/*.suo
+obj/**/*.cache
+obj/**/*.log
