@@ -1,7 +1,5 @@
 ﻿using AccessData.DataBaseInfraestructure.Entities;
-using AccessData.Interfaces;
 using Application.Interfaces;
-using Application.Util;
 using RetailStore.Interfaces;
 using RetailStore.Util;
 
@@ -9,29 +7,14 @@ namespace RetailStore.MenuBuilder.Classes
 {
     public class ShowCategoriesOption : IMenuOption 
     {
-        private readonly IProductService _productService;
-        private readonly IProductQueries _productQueries;
-        private readonly IPickProduct _pickProduct;
-        private readonly ISalesMathematics _salesMathematics;
         private readonly IList<Product> _productsList;
-        private readonly SaleInformation _saleInformation;
         private readonly Sale _sale;
-        private readonly ISaleService _saleService;
-        private readonly IRegisterSaleQueries _registerSaleQueries;
-        private IList<Product> _bougthProducts;
-
-        public ShowCategoriesOption(IProductService productService, IProductQueries productQueries, IPickProduct pickProduct, ISalesMathematics salesMathematics, IList<Product> productsList, IList<Product> bougthProducts, SaleInformation saleInformation, Sale sale, ISaleService saleService, IRegisterSaleQueries registerSaleQueries)
+        private readonly IRegisterSale _registerSale;
+        public ShowCategoriesOption(IRegisterSale registerSale, IList<Product> productsList, Sale sale)
         {
-            _productService = productService;
-            _productQueries = productQueries;
-            _pickProduct = pickProduct;
-            _salesMathematics = salesMathematics;
+            _registerSale = registerSale;
             _productsList = productsList;
-            _bougthProducts = bougthProducts;
-            _saleInformation = saleInformation;
             _sale = sale;
-            _saleService = saleService;
-            _registerSaleQueries = registerSaleQueries;
         }
 
         public void Execute()
@@ -41,49 +24,16 @@ namespace RetailStore.MenuBuilder.Classes
             while (!finishBuy)
 
             {
-                var boughtProductsBefore = _bougthProducts.Count;
                 var categoryValues = ShowCategories.PrintCategories();
 
-                Console.WriteLine();
-                Console.Write("Seleccione una categoría (0 para volver al menú principal finalizando compra): ");
-                Console.WriteLine();
+                UserInterfaceHandler.InitialSaleMessage();
                 string userInput = Console.ReadLine();
 
-                if (int.TryParse(userInput, out int selectedCategoryIndex) && selectedCategoryIndex >= 1 && selectedCategoryIndex <= categoryValues.Count)
-                {
-                    _bougthProducts = _pickProduct.AddProductToShoppingCart(_productService, categoryValues, selectedCategoryIndex, _productQueries, _productsList);
-
-                    if (_bougthProducts.Count > boughtProductsBefore)
-                    {
-                        var saleCaculated = _salesMathematics.CalculateSale(_bougthProducts[_bougthProducts.Count - 1], _saleInformation);
-                        _sale.Subtotal += saleCaculated.SubTotal;
-                        _sale.TotalDiscount += saleCaculated.TotalDiscount;
-                        _sale.TotalPay += saleCaculated.TotalPay;
-                    }
-
-                }
-
-                else if (selectedCategoryIndex == 0 && _bougthProducts.Count > 0) 
-                { 
-                    _saleService.RegisterSale(_registerSaleQueries, _bougthProducts, _sale); 
-                    finishBuy = true; 
-                }
-
-                else if (selectedCategoryIndex == 0 && _bougthProducts.Count == 0) 
-                { 
-                    Console.WriteLine("Se finalizó la compra sin ningún producto en el carrito."); 
-                    finishBuy = true; 
-                }
-
-                else { Console.WriteLine("Opción no válida. Intente de nuevo."); }
+                finishBuy = _registerSale.SaleAProduct(userInput, categoryValues);
             }
 
-            _productsList.Clear();
-            _sale.Subtotal = 0;
-            _sale.TotalDiscount = 0;
-            _sale.TotalPay = 0;
-            Console.WriteLine("Presione cualquier tecla para volver al menú principal...");
-            Console.ReadKey();
+            ClearShoppingCart.ClearCart(_productsList, _sale);
+            UserInterfaceHandler.FinishSaleMessage();
         }
     }
 }

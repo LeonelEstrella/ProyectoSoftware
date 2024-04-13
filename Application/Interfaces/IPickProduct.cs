@@ -1,8 +1,7 @@
 ﻿using AccessData.DataBaseInfraestructure.Entities;
 using AccessData.Interfaces;
-using Application.Interfaces;
 
-namespace RetailStore.Interfaces
+namespace Application.Interfaces
 {
     public interface IPickProduct
     {

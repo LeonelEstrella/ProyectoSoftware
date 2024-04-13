@@ -8,7 +8,6 @@ using Application.Services;
 using Application.Util;
 using RetailStore.Interfaces;
 using RetailStore.MenuBuilder.Classes;
-using RetailStore.Util;
 
 RetailStoreDBContext retailStoreDBContext = new RetailStoreDBContext();
 IProductQueries productQueries = new ProductQueries(retailStoreDBContext);
@@ -21,13 +20,14 @@ SaleInformation saleInformation = new SaleInformation();
 IList<Product> productList = new List<Product>();
 IList<Product> bougthProducts = new List<Product>();
 Sale sale = new Sale();
+IRegisterSale registerSale = new RegisterSale(bougthProducts, pickProduct, salesMathematics, productList, saleInformation, sale, saleService, registerSaleQueries, productService, productQueries);
 
-IMenuOption[] menuOptions = new IMenuOption[]
-        {
-            new ShowCategoriesOption(productService, productQueries, pickProduct, salesMathematics ,productList, bougthProducts, saleInformation, sale, saleService, registerSaleQueries),
+IMenuOption[] menuOptions =
+        [
+            new ShowCategoriesOption(registerSale, productList, sale),
             new ExitOption()
             
-        };
+        ];
 
 Menu menu = new Menu(menuOptions);
 menu.ShowMainMenu();

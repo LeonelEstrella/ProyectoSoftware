@@ -1,4 +1,4 @@
-﻿using RetailStore.Interfaces;
+﻿using Application.Interfaces;
 
 namespace RetailStore.Util
 {
