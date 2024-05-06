@@ -29,17 +29,6 @@ namespace AccessData.Queries
                         ImageUrl = product.ImageUrl
                     }).ToList();
 
-            foreach (var product in producCategorytList)
-            {
-                Console.WriteLine($"ProductID: {product.ProductId}");
-                Console.WriteLine($"Name: {product.Name}");
-                Console.WriteLine($"Description: {product.Description}");
-                Console.WriteLine($"Price: {product.Price}");
-                Console.WriteLine($"Discount: {product.Discount}");
-                Console.WriteLine($"Category: {product.category.Name}");
-                Console.WriteLine(new string('-', Console.WindowWidth - 1));
-            }
-
             return producCategorytList;
 
         }

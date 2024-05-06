@@ -13,7 +13,7 @@ namespace AccessData.Queries
         {
         }
 
-        public void RegisterSale(Sale sale)
+        public Sale RegisterSale(Sale sale)
         {
             var newSale = new Sale
             {
@@ -46,6 +46,7 @@ namespace AccessData.Queries
 
             _context.Sale.Add(newSale);
             _context.SaveChanges();
+            return newSale;
         }
     }
 }

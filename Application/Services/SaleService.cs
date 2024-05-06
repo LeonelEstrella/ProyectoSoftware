@@ -6,9 +6,16 @@ namespace Application.Services
 {
     public class SaleService : ISaleService
     {
-        public void RegisterSale(IRegisterSaleQueries registerSaleQueries, Sale sale)
+        private readonly IRegisterSaleQueries _registerSaleQueries;
+
+        public SaleService(IRegisterSaleQueries registerSaleQueries)
         {
-            registerSaleQueries.RegisterSale(sale);
+            _registerSaleQueries = registerSaleQueries;
+        }
+
+        public Sale RegisterSale(Sale sale)
+        {
+            return _registerSaleQueries.RegisterSale(sale);
         }
     }
 }

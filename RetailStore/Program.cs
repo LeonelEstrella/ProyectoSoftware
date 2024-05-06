@@ -9,23 +9,26 @@ using Application.Services;
 using Application.Util;
 using RetailStore.Interfaces;
 using RetailStore.MenuBuilder.Classes;
+using RetailStore.Util;
 
 RetailStoreDBContext retailStoreDBContext = new RetailStoreDBContext();
 IProductQueries productQueries = new ProductQueries(retailStoreDBContext);
-IProductService productService = new ProductService();
-IRegisterSaleQueries registerSaleQueries = new RegisterSaleQueries(retailStoreDBContext);
-IPickProduct pickProduct = new PickProduct();
-ISaleService saleService = new SaleService();
-ISalesMathematics salesMathematics = new SalesMathematics();
-SaleInformation saleInformation = new SaleInformation();
+IProductService productService = new ProductService(productQueries);
 IList<ProductSaledDTO> productList = new List<ProductSaledDTO>();
+IRegisterSaleQueries registerSaleQueries = new RegisterSaleQueries(retailStoreDBContext);
+ICategoryOptions.Categories[] allCategories = (ICategoryOptions.Categories[])Enum.GetValues(typeof(ICategoryOptions.Categories));
+IPickProduct pickProduct = new PickProduct(productList);
+ISaleService saleService = new SaleService(registerSaleQueries);
+SaleInformation saleInformation = new SaleInformation();
+ISalesMathematics salesMathematics = new SalesMathematics(saleInformation);
 IList<ProductSaledDTO> bougthProducts = new List<ProductSaledDTO>();
 Sale sale = new Sale();
-IRegisterSale registerSale = new RegisterSale(bougthProducts, pickProduct, salesMathematics, productList, saleInformation, sale, saleService, registerSaleQueries, productService, productQueries);
+ISaleSelectedProducts registerSale = new SaleSelectedProducts(bougthProducts, pickProduct, salesMathematics, sale, saleService);
+IShowProducts showProducts = new ShowProducts(productService);
 
 IMenuOption[] menuOptions =
         [
-            new ShowCategoriesOption(registerSale, productList, sale),
+            new ShowOptions(registerSale, productList, sale, allCategories,showProducts),
             new ExitOption()
             
         ];

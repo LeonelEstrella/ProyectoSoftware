@@ -6,25 +6,32 @@ namespace Application.Common
 {
     public class SalesMathematics : ISalesMathematics
     {
+        private readonly SaleInformation _saleInformation;
         const decimal TAXES = 1.21m;
-        public SaleInformation CalculateSale(ProductSaledDTO lastBougthProduct, SaleInformation saleInformation)
+
+        public SalesMathematics(SaleInformation saleInformation)
+        {
+            _saleInformation = saleInformation;
+        }
+
+        public SaleInformation CalculateSale(ProductSaledDTO lastBougthProduct)
         {
 
-            saleInformation.SubTotal = 0;
-            saleInformation.TotalDiscount = 0;
-            saleInformation.TotalPay = 0;
+            _saleInformation.SubTotal = 0;
+            _saleInformation.TotalDiscount = 0;
+            _saleInformation.TotalPay = 0;
 
-            saleInformation.SubTotal += lastBougthProduct.Price * lastBougthProduct.Quantity;
+            _saleInformation.SubTotal += lastBougthProduct.Price * lastBougthProduct.Quantity;
 
             if (lastBougthProduct.Discount != 0) 
             {
                 decimal discount = lastBougthProduct.Discount ?? 0;
-                saleInformation.TotalDiscount += (lastBougthProduct.Price - (lastBougthProduct.Price * (1 - (discount / 100M)))) * lastBougthProduct.Quantity; 
+                _saleInformation.TotalDiscount += (lastBougthProduct.Price - (lastBougthProduct.Price * (1 - (discount / 100M)))) * lastBougthProduct.Quantity; 
             }
 
-            saleInformation.TotalPay = ((saleInformation.SubTotal - saleInformation.TotalDiscount) * TAXES);
+            _saleInformation.TotalPay = ((_saleInformation.SubTotal - _saleInformation.TotalDiscount) * TAXES);
 
-            return saleInformation;
+            return _saleInformation;
         }
     }
 }
