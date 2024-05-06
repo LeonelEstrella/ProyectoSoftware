@@ -1,15 +1,16 @@
 ﻿using AccessData.DataBaseInfraestructure.Entities;
 using AccessData.Interfaces;
 using Application.Interfaces;
+using Application.Models;
 
 namespace Application.Util
 {
     public class RegisterSale : IRegisterSale
     {
-        private IList<Product> _bougthProducts;
+        private IList<ProductSaledDTO> _bougthProducts;
         private readonly IPickProduct _pickProduct;
         private readonly ISalesMathematics _salesMathematics;
-        private readonly IList<Product> _productsList;
+        private readonly IList<ProductSaledDTO> _productsList;
         private readonly IProductService _productService;
         private readonly SaleInformation _saleInformation;
         private readonly Sale _sale;
@@ -17,8 +18,8 @@ namespace Application.Util
         private readonly IRegisterSaleQueries _registerSaleQueries;
         private readonly IProductQueries _productQueries;
 
-        public RegisterSale(IList<Product> bougthProducts,
-            IPickProduct pickProduct, ISalesMathematics salesMathematics, IList<Product> productsList, 
+        public RegisterSale(IList<ProductSaledDTO> bougthProducts,
+            IPickProduct pickProduct, ISalesMathematics salesMathematics, IList<ProductSaledDTO> productsList, 
             SaleInformation saleInformation, Sale sale, ISaleService saleService, IRegisterSaleQueries registerSaleQueries,
             IProductService productService, IProductQueries productQueries)
         {
@@ -36,6 +37,7 @@ namespace Application.Util
 
         public Boolean SaleAProduct(string userInput, List<ICategoryOptions.Categories> categoryValues) 
         {
+
             try
             {
                 var boughtProductsBefore = _bougthProducts.Count;
@@ -57,8 +59,19 @@ namespace Application.Util
                 }
 
                 else if (selectedCategoryIndex == 0 && _bougthProducts.Count > 0)
-                {
-                    _saleService.RegisterSale(_registerSaleQueries, _bougthProducts, _sale);
+                {                    
+                    List<Product> list = new List<Product>();
+                    foreach (var product in _bougthProducts)
+                    {
+                        _sale.SaleProduct.Add(new SaleProduct
+                        {
+                            Product = product.ProductId,
+                            Quantity = product.Quantity,
+                            Price = product.Price,
+                            Discount = product.Discount
+                        });
+                    }
+                    _saleService.RegisterSale(_registerSaleQueries, _sale);
                     return true;
                 }
 

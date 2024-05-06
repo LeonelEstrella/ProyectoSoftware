@@ -25,7 +25,7 @@ namespace AccessData.Queries
                         Description = product.Description,
                         Price = product.Price,
                         Discount = product.Discount,
-                        Category = product.Category,
+                        category = category,
                         ImageUrl = product.ImageUrl
                     }).ToList();
 

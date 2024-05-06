@@ -1,10 +1,11 @@
 ﻿using AccessData.DataBaseInfraestructure.Entities;
 using AccessData.Interfaces;
+using Application.Models;
 
 namespace Application.Interfaces
 {
     public interface IPickProduct
     {
-       public IList<Product> AddProductToShoppingCart(IProductService productService, IList<ICategoryOptions.Categories> categoryValues, int selectedCategoryIndex, IProductQueries productQueries, IList<Product> productList);
+       public IList<ProductSaledDTO> AddProductToShoppingCart(IProductService productService, IList<ICategoryOptions.Categories> categoryValues, int selectedCategoryIndex, IProductQueries productQueries, IList<ProductSaledDTO> productList);
     }
 }

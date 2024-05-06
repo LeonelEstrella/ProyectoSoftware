@@ -1,5 +1,6 @@
 ﻿using AccessData.DataBaseInfraestructure.Entities;
 using Application.Interfaces;
+using Application.Models;
 using RetailStore.Interfaces;
 using RetailStore.Util;
 
@@ -7,10 +8,10 @@ namespace RetailStore.MenuBuilder.Classes
 {
     public class ShowCategoriesOption : IMenuOption 
     {
-        private readonly IList<Product> _productsList;
+        private readonly IList<ProductSaledDTO> _productsList;
         private readonly Sale _sale;
         private readonly IRegisterSale _registerSale;
-        public ShowCategoriesOption(IRegisterSale registerSale, IList<Product> productsList, Sale sale)
+        public ShowCategoriesOption(IRegisterSale registerSale, IList<ProductSaledDTO> productsList, Sale sale)
         {
             _registerSale = registerSale;
             _productsList = productsList;

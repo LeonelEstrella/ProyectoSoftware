@@ -4,6 +4,6 @@ namespace AccessData.Interfaces
 {
     public interface IRegisterSaleQueries
     {
-        void RegisterSale(IList<Product> productList, Sale sale);
+        void RegisterSale(Sale sale);
     }
 }

@@ -1,16 +1,17 @@
 ﻿using AccessData.DataBaseInfraestructure.Entities;
 using AccessData.Interfaces;
 using Application.Interfaces;
+using Application.Models;
 
 namespace Application.Util
 {
     public class PickProduct : IPickProduct
     {
-        public IList<Product> AddProductToShoppingCart(IProductService productService, IList<ICategoryOptions.Categories> categoryValues, int selectedCategoryIndex, IProductQueries productQueries, IList<Product> buyProductList)
+        public IList<ProductSaledDTO> AddProductToShoppingCart(IProductService productService, IList<ICategoryOptions.Categories> categoryValues, int selectedCategoryIndex, IProductQueries productQueries, IList<ProductSaledDTO> buyProductList)
         {
             Console.Clear();
 
-            var selectedCategory = categoryValues[selectedCategoryIndex - 1];
+            var selectedCategory = categoryValues[selectedCategoryIndex - 1].ToString().Replace("_", " ");
             var productListByCategory = productService.RetrieveProduct(productQueries, selectedCategory.ToString());
             
             Console.WriteLine("Escriba parte del nombre del producto (mínimo 8 caracteres) para agregarlo al carrito o pulse ENTER para volver atras:\n");
@@ -18,15 +19,23 @@ namespace Application.Util
 
             if (inputString != "" && inputString.Length >= 8)
             {
-                buyProductList = ChooseProduct(inputString, productListByCategory, buyProductList);
+                Console.WriteLine("Ingrese la cantidad de productos que desea agregar:");
+                int quantity;
+
+                while (!int.TryParse(Console.ReadLine(), out quantity) || quantity <= 0)
+                {
+                    Console.WriteLine("Cantidad inválida. Intente de nuevo:");
+                }
+
+                buyProductList = ChooseProduct(inputString, productListByCategory, buyProductList, quantity);
             }
 
-            else { Console.WriteLine("No se ingreso el mínimo de palabras requerido"); Thread.Sleep(2000); }
+            else { Console.WriteLine("No se ingreso el mínimo de palabras requerido"); Thread.Sleep(2000); }        
 
             return buyProductList;
         }
 
-        private IList<Product> ChooseProduct(string productName, IList<Product> productList, IList<Product> buyProductList)
+        private IList<ProductSaledDTO> ChooseProduct(string productName, IList<Product> productList, IList<ProductSaledDTO> buyProductList, int quantity)
         {
             var currentlyBuyProductList = buyProductList.Count; 
 
@@ -34,7 +43,18 @@ namespace Application.Util
             {
                 if (product.Name.ToLower().Contains(productName.ToLower()))
                 {
-                    buyProductList.Add(product);
+                    buyProductList.Add(new ProductSaledDTO
+                    {
+                        ProductId = product.ProductId,
+                        Name = product.Name,
+                        Description = product.Description,
+                        Price = product.Price,
+                        Discount = product.Discount,
+                        Category = product.Category,
+                        ImageUrl = product.ImageUrl,
+                        Quantity = quantity
+                    });
+
                     Console.WriteLine("Producto agregado al carrito!");
                     Thread.Sleep(700);
                 }

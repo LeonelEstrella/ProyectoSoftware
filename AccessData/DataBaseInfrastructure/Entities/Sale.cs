@@ -5,6 +5,12 @@ namespace AccessData.DataBaseInfraestructure.Entities
 {
     public class Sale
     {
+
+        public Sale()
+        {
+            SaleProduct = new List<SaleProduct>();
+        }
+
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int SaleId { get; set; }

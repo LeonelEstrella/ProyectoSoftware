@@ -13,7 +13,7 @@ namespace AccessData.Queries
         {
         }
 
-        public void RegisterSale(IList<Product> productList, Sale sale)
+        public void RegisterSale(Sale sale)
         {
             var newSale = new Sale
             {
@@ -23,34 +23,24 @@ namespace AccessData.Queries
                 Taxes = TAXES,
                 DateTime = DateTime.Now,
             };
-
+            
             newSale.SaleProduct = new List<SaleProduct>();
 
-            foreach (var singleProduct in productList) 
+            foreach (var singleProduct in sale.SaleProduct) 
             {
-                var product = _context.Product.FirstOrDefault(p => p.ProductId == singleProduct.ProductId);
+                var product = _context.Product.FirstOrDefault(p => p.ProductId == singleProduct.Product);
 
                 if (product != null)
                 {
-                    var existingSaleProduct = newSale.SaleProduct.FirstOrDefault(sp => sp.Product == product.ProductId);
-
-                    if (existingSaleProduct != null)
+                    var saleProduct = new SaleProduct
                     {
-                        existingSaleProduct.Quantity++;
-                    }
+                        Product = singleProduct.Product,
+                        Quantity = singleProduct.Quantity,
+                        Price = product.Price,
+                        Discount = product.Discount
+                    };
 
-                    else
-                    {
-                        var saleProduct = new SaleProduct
-                        {
-                            Product = singleProduct.ProductId,
-                            Quantity = 1,
-                            Price = product.Price,
-                            Discount = product.Discount
-                        };
-
-                        newSale.SaleProduct.Add(saleProduct);
-                    }
+                    newSale.SaleProduct.Add(saleProduct);
                 }
             }
 

@@ -1,10 +1,11 @@
 ﻿using AccessData.DataBaseInfraestructure.Entities;
+using Application.Models;
 
 namespace RetailStore.Util
 {
     public class ClearShoppingCart
     {
-        public static void ClearCart(IList<Product> _productsList, Sale _sale) 
+        public static void ClearCart(IList<ProductSaledDTO> _productsList, Sale _sale) 
         {
             _productsList.Clear();
             _sale.Subtotal = 0;
