@@ -15,7 +15,11 @@ namespace Application.Common
 
             saleInformation.SubTotal += lastBougthProduct.Price;
 
-            if (lastBougthProduct.Discount != 0) saleInformation.TotalDiscount += lastBougthProduct.Price - (lastBougthProduct.Price * (1 -  (lastBougthProduct.Discount / 100M)));
+            if (lastBougthProduct.Discount != 0) 
+            {
+                decimal discount = lastBougthProduct.Discount ?? 0;
+                saleInformation.TotalDiscount += lastBougthProduct.Price - (lastBougthProduct.Price * (1 - (discount / 100M))); 
+            }
 
             saleInformation.TotalPay = (saleInformation.SubTotal - saleInformation.TotalDiscount) * TAXES;
 

@@ -7,13 +7,25 @@ namespace AccessData.DataBaseInfraestructure.Entities
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int SaleProductId { get; set; }
-        public Guid ProductId {  get; set; } 
-        public int Quantity { get; set; }
-        public decimal Price { get; set; }
-        public int Discount { get; set; }
+        public int ShoppingCartId { get; set; }
 
-        [ForeignKey("ProductId")]
-        public Product Product { get; set; }
+        [Required]
+        public int Sale {  get; set; }
+
+        [Required]
+        public Guid Product {  get; set; }
+
+        [Required]
+        public int Quantity { get; set; }
+
+        [Required]
+        public decimal Price { get; set; }
+        public int? Discount { get; set; }
+
+        [ForeignKey("Product")]
+        public Product product { get; set; }
+
+        [ForeignKey("Sale")]
+        public Sale sale { get; set; }
     }
 }

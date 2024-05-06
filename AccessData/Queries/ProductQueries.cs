@@ -16,7 +16,7 @@ namespace AccessData.Queries
             var producCategorytList = _context.Product
                     .Join(
                     _context.Category.Where( c => c.Name == categoryName ),
-                    product => product.CategoryId,
+                    product => product.Category,
                     category => category.CategoryId,
                     (product, category) => new Product
                     {
@@ -25,8 +25,8 @@ namespace AccessData.Queries
                         Description = product.Description,
                         Price = product.Price,
                         Discount = product.Discount,
-                        Category = category,
-                        ImageLink = product.ImageLink
+                        Category = product.Category,
+                        ImageUrl = product.ImageUrl
                     }).ToList();
 
             foreach (var product in producCategorytList)
@@ -36,7 +36,7 @@ namespace AccessData.Queries
                 Console.WriteLine($"Description: {product.Description}");
                 Console.WriteLine($"Price: {product.Price}");
                 Console.WriteLine($"Discount: {product.Discount}");
-                Console.WriteLine($"Category: {product.Category.Name}");
+                Console.WriteLine($"Category: {product.category.Name}");
                 Console.WriteLine(new string('-', Console.WindowWidth - 1));
             }
 

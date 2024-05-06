@@ -32,7 +32,7 @@ namespace AccessData.Queries
 
                 if (product != null)
                 {
-                    var existingSaleProduct = newSale.SaleProduct.FirstOrDefault(sp => sp.ProductId == product.ProductId);
+                    var existingSaleProduct = newSale.SaleProduct.FirstOrDefault(sp => sp.Product == product.ProductId);
 
                     if (existingSaleProduct != null)
                     {
@@ -43,7 +43,7 @@ namespace AccessData.Queries
                     {
                         var saleProduct = new SaleProduct
                         {
-                            ProductId = singleProduct.ProductId,
+                            Product = singleProduct.ProductId,
                             Quantity = 1,
                             Price = product.Price,
                             Discount = product.Discount
