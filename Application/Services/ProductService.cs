@@ -13,6 +13,11 @@ namespace Application.Services
             _productQueries = productQueries;
         }
 
+        public Product GetProductByName(string productName)
+        {
+            return _productQueries.GetProductByName(productName);
+        }
+
         public List<Product> RetrieveProduct(string categoryName)
         {
             return _productQueries.RetrieveProducts(categoryName);

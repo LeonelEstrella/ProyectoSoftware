@@ -4,6 +4,6 @@ namespace Application.Interfaces
 {
     public interface ISaleSelectedProducts
     {
-        Sale SaleAProduct(int userInput, List<ICategoryOptions.Categories> categoryValues, List<Product> productList);
+        (Sale, Boolean) SaleAProduct(Dictionary<Product, int> productList);
     }
 }

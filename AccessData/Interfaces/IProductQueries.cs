@@ -4,6 +4,7 @@ namespace AccessData.Interfaces
 {
     public interface IProductQueries
     {
-        public List<Product> RetrieveProducts(string categoryName);
+        List<Product> RetrieveProducts(string categoryName);
+        Product GetProductByName(string productName);
     }
 }

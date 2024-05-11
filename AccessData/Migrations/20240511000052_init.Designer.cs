@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AccessData.Migrations
 {
     [DbContext(typeof(RetailStoreDBContext))]
-    [Migration("20240418122946_init")]
+    [Migration("20240511000052_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -34,8 +34,8 @@ namespace AccessData.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CategoryId"));
 
                     b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.HasKey("CategoryId");
 
@@ -50,47 +50,47 @@ namespace AccessData.Migrations
                         new
                         {
                             CategoryId = 2,
-                            Name = "Tecnología_y_Electrónica"
+                            Name = "Tecnología y Electrónica"
                         },
                         new
                         {
                             CategoryId = 3,
-                            Name = "Moda_y_Accesorios"
+                            Name = "Moda y Accesorios"
                         },
                         new
                         {
                             CategoryId = 4,
-                            Name = "Hogar_y_Decoración"
+                            Name = "Hogar y Decoración"
                         },
                         new
                         {
                             CategoryId = 5,
-                            Name = "Salud_y_Belleza"
+                            Name = "Salud y Belleza"
                         },
                         new
                         {
                             CategoryId = 6,
-                            Name = "Deportes_y_Ocio"
+                            Name = "Deportes y Ocio"
                         },
                         new
                         {
                             CategoryId = 7,
-                            Name = "Juguetes_y_Juegos"
+                            Name = "Juguetes y Juegos"
                         },
                         new
                         {
                             CategoryId = 8,
-                            Name = "Alimentos_y_Bebidas"
+                            Name = "Alimentos y Bebidas"
                         },
                         new
                         {
                             CategoryId = 9,
-                            Name = "Libros_y_Material_Educativo"
+                            Name = "Libros y Material Educativo"
                         },
                         new
                         {
                             CategoryId = 10,
-                            Name = "Jardinería_y_Bricolaje"
+                            Name = "Jardinería y Bricolaje"
                         });
                 });
 
@@ -100,430 +100,408 @@ namespace AccessData.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("CategoryId")
+                    b.Property<int>("Category")
                         .HasColumnType("int");
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Discount")
+                    b.Property<int?>("Discount")
                         .HasColumnType("int");
 
-                    b.Property<string>("ImageLink")
-                        .IsRequired()
+                    b.Property<string>("ImageUrl")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
 
                     b.HasKey("ProductId");
 
-                    b.HasIndex("CategoryId");
+                    b.HasIndex("Category");
 
                     b.ToTable("Product");
 
                     b.HasData(
                         new
                         {
-                            ProductId = new Guid("606391bd-e612-49af-9106-6437fdd47268"),
-                            CategoryId = 1,
+                            ProductId = new Guid("ab0a6e94-beeb-40c0-a23f-81e46d5dbc63"),
+                            Category = 1,
                             Description = "Disfrutá de tus alimentos frescos y almacenalos de manera práctica y cómoda en la heladera Drean, la protagonista de la cocina.",
                             Discount = 31,
-                            ImageLink = "https://http2.mlstatic.com/D_NQ_NP_661063-MLU74118278062_012024-O.webp",
+                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_661063-MLU74118278062_012024-O.webp",
                             Name = "Heladera Drean HDR400F11 steel con freezer 396L 220V",
                             Price = 1298199m
                         },
                         new
                         {
-                            ProductId = new Guid("94f07332-9ca6-4367-b0de-d10eba1d6848"),
-                            CategoryId = 1,
+                            ProductId = new Guid("2b15a38b-b85f-4f2d-9f24-b08161c64222"),
+                            Category = 1,
                             Description = "Únicamente necesita que se introduzcan los productos de limpieza y se elija el programa deseado.",
                             Discount = 39,
-                            ImageLink = "https://http2.mlstatic.com/D_NQ_NP_944011-MLA74651986202_022024-O.webp",
+                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_944011-MLA74651986202_022024-O.webp",
                             Name = "Lavarropas automatico Drean Next 8.14 P ECO inverter blanco 8kg 220 V",
                             Price = 744292m
                         },
                         new
                         {
-                            ProductId = new Guid("0a6f00d1-a745-4c62-b131-3ffdf9efe784"),
-                            CategoryId = 1,
+                            ProductId = new Guid("46ae9ac6-d0c7-48d5-b333-adf7040f5e4f"),
+                            Category = 1,
                             Description = "Marca líder mundial en la comercialización de electrodomésticos que orienta su trabajo en la tecnología, el diseño y la innovación para mejorar la calidad de vida.",
                             Discount = 47,
-                            ImageLink = "https://http2.mlstatic.com/D_NQ_NP_973805-MLU74159511409_012024-O.webp",
+                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_973805-MLU74159511409_012024-O.webp",
                             Name = "Lavavajilla Drean Dish 12.2 Ltx 12 Cubiertos Acero",
                             Price = 1209224m
                         },
                         new
                         {
-                            ProductId = new Guid("8d3fe662-6aed-49ef-8b4c-851ae8e26f0b"),
-                            CategoryId = 1,
+                            ProductId = new Guid("9f6adbe6-1371-477f-986c-da1b5d84b324"),
+                            Category = 1,
                             Description = "Freidora de Aire Gadnic F4.0 Sin Aceite 4Lts Digital",
-                            Discount = 0,
-                            ImageLink = "https://http2.mlstatic.com/D_NQ_NP_862380-MLU74244415875_012024-O.webp",
+                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_862380-MLU74244415875_012024-O.webp",
                             Name = "Freidora Electrica De Aire Sin Aceite + Pinza Gratis 1400w Color Negro",
                             Price = 124999m
                         },
                         new
                         {
-                            ProductId = new Guid("13bb73ae-3a7a-4075-a9cc-2d6398bdc592"),
-                            CategoryId = 2,
+                            ProductId = new Guid("ad0ba7eb-0f7e-4aca-b3d8-6950bd12ec4d"),
+                            Category = 2,
                             Description = "El Robot de limpieza ATMA facilita la tarea de mantener los pisos impecables, combinando las funciones de aspirar y trapear simultáneamente.",
                             Discount = 19,
-                            ImageLink = "https://http2.mlstatic.com/D_NQ_NP_898750-MLU73587878148_122023-O.webp",
+                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_898750-MLU73587878148_122023-O.webp",
                             Name = "Aspiradora Trapeadora Robot Atma Atar21c1dh Blanca 220v",
                             Price = 668249m
                         },
                         new
                         {
-                            ProductId = new Guid("b14ad77e-95d6-4acd-86de-8987ed2c9ed0"),
-                            CategoryId = 2,
+                            ProductId = new Guid("1c8ec55a-6672-4fe7-a4d2-e6d0109954e5"),
+                            Category = 2,
                             Description = "Con tu consola Switch tendrás entretenimiento asegurado todos los días. Su tecnología fue creada para poner nuevos retos tanto a jugadores principiantes como expertos. ",
-                            Discount = 0,
-                            ImageLink = "https://http2.mlstatic.com/D_NQ_NP_803086-MLA47920649105_102021-O.webp",
+                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_803086-MLA47920649105_102021-O.webp",
                             Name = "Nintendo Switch OLED 64GB Standard color rojo neon, azul neon y negro",
                             Price = 517999m
                         },
                         new
                         {
-                            ProductId = new Guid("0e34ad6a-1611-4d8c-bdfb-67fc2fa059ef"),
-                            CategoryId = 2,
+                            ProductId = new Guid("b4de373e-55ee-40de-ad73-35258255dc3e"),
+                            Category = 2,
                             Description = "Cargador Móvil Gadnic con LED Indicador de Batería 25000 mAh",
-                            Discount = 0,
-                            ImageLink = "https://http2.mlstatic.com/D_NQ_NP_639848-MLU73345299871_122023-O.webp",
+                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_639848-MLU73345299871_122023-O.webp",
                             Name = "Cargador Movil Gadnic Con Lde Indicador De Batería 25000 Mah Color Negro",
                             Price = 41749m
                         },
                         new
                         {
-                            ProductId = new Guid("1f3f308f-a4d3-4974-8997-aacce72973bc"),
-                            CategoryId = 2,
+                            ProductId = new Guid("a100b778-9167-499c-af3f-fa298c26a94b"),
+                            Category = 2,
                             Description = "Google TV de Philips le ofrece el contenido que desea, cuando lo desee. Puede personalizar su pantalla principal para mostrar sus aplicaciones favoritas.",
                             Discount = 11,
-                            ImageLink = "https://http2.mlstatic.com/D_NQ_NP_677196-MLU74154724021_012024-O.webp",
+                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_677196-MLU74154724021_012024-O.webp",
                             Name = "Tv Smart Led Philips 32 Hd 32phd6918/77 Google Tv",
                             Price = 269999m
                         },
                         new
                         {
-                            ProductId = new Guid("ccd7afaf-8924-450a-8e89-bcef973c98dc"),
-                            CategoryId = 3,
+                            ProductId = new Guid("480318c8-cdf1-40b6-a406-b5ef540aae7a"),
+                            Category = 3,
                             Description = "PULSERA DE ACERO QUIRURGICO 2 EN 1",
-                            Discount = 0,
-                            ImageLink = "https://http2.mlstatic.com/D_NQ_NP_727752-MLA47723827894_102021-O.webp",
+                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_727752-MLA47723827894_102021-O.webp",
                             Name = "Combo Pulsera Hombre 2 En 1 Acero Quirugico Inoxidable Pack",
                             Price = 2547.25m
                         },
                         new
                         {
-                            ProductId = new Guid("def211a1-6b67-42ef-9bb4-84a29ae9c045"),
-                            CategoryId = 3,
+                            ProductId = new Guid("66dbd775-b9bb-4757-b91e-7a7650937640"),
+                            Category = 3,
                             Description = "Shoter premium shoe cleaner es un producto innovador para la limpieza de calzado urbano y deportivo.",
-                            Discount = 0,
-                            ImageLink = "https://http2.mlstatic.com/D_NQ_NP_659147-MLA40000388003_122019-O.webp",
+                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_659147-MLA40000388003_122019-O.webp",
                             Name = "Limpia Zapatillas Shoter - Kit (limpiador Premium + Cepillo)",
                             Price = 18400m
                         },
                         new
                         {
-                            ProductId = new Guid("ede9ff2a-2c19-4c4f-9e92-3d32a2043a72"),
-                            CategoryId = 3,
+                            ProductId = new Guid("73ae89c4-f49b-4e09-b2ac-f1c6d981d9fc"),
+                            Category = 3,
                             Description = "PANTALON CARGO JOGGER 4 BOLSILLOS Y 2 SOLAPAS TRASERAS DE GABARDINA.",
                             Discount = 10,
-                            ImageLink = "https://http2.mlstatic.com/D_NQ_NP_964819-MLA70940869495_082023-O.webp",
+                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_964819-MLA70940869495_082023-O.webp",
                             Name = "Pantalones Hombre Cargo Gabardina Bolsillos Casuales Jogger",
                             Price = 21899m
                         },
                         new
                         {
-                            ProductId = new Guid("39776d7e-2455-47af-8954-12d16ea3c460"),
-                            CategoryId = 3,
+                            ProductId = new Guid("e16ab321-b55f-413e-87a3-a84a05700896"),
+                            Category = 3,
                             Description = "Bolso Wilson 65.150005.",
                             Discount = 11,
-                            ImageLink = "https://http2.mlstatic.com/D_NQ_NP_910443-MLU72877827774_112023-O.webp",
+                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_910443-MLU72877827774_112023-O.webp",
                             Name = "Bolso Wilson Deportivo Viaje Urbano Bolsillo Gimnasio Cierre Color Verde Liso",
                             Price = 39999m
                         },
                         new
                         {
-                            ProductId = new Guid("b7b02f5a-34ed-4526-811d-b264a1a181b7"),
-                            CategoryId = 4,
+                            ProductId = new Guid("60dd49a4-9f9f-4256-a5dd-e6ffd17e0479"),
+                            Category = 4,
                             Description = "Pileta Encastrable HARDEST Modelo HQ-113XT.",
-                            Discount = 0,
-                            ImageLink = "https://http2.mlstatic.com/D_NQ_NP_760812-MLA54507511656_032023-O.webp",
+                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_760812-MLA54507511656_032023-O.webp",
                             Name = "Bacha Cocina Pileta Simple Acero Inoxidable Dosificador 56cm",
                             Price = 102999m
                         },
                         new
                         {
-                            ProductId = new Guid("420a9058-46e1-41f2-840c-3ff2efbcc6ae"),
-                            CategoryId = 4,
+                            ProductId = new Guid("fa22f6d2-b40d-4afe-abf9-b9d0d337504c"),
+                            Category = 4,
                             Description = "TENDER DE PIE ACERO CON ALAS.",
                             Discount = 15,
-                            ImageLink = "https://http2.mlstatic.com/D_NQ_NP_685369-MLU72549946435_102023-O.webp",
+                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_685369-MLU72549946435_102023-O.webp",
                             Name = "Tendedero Tender Ropa Alas Acero Pintado Plegable De Pie 953 Color Blanco",
                             Price = 16341.18m
                         },
                         new
                         {
-                            ProductId = new Guid("7e9c7d51-14c2-452f-ba7d-a4f2a4c76694"),
-                            CategoryId = 4,
+                            ProductId = new Guid("0d190a37-e2f8-47bd-9201-febf8fa639a0"),
+                            Category = 4,
                             Description = "Cuadro moderno decorativo calado sobre madera mdf ideal para hogar casa oficina living ambientes minimalistas degrade.",
                             Discount = 5,
-                            ImageLink = "https://http2.mlstatic.com/D_NQ_NP_937605-MLU71497717015_092023-O.webp",
+                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_937605-MLU71497717015_092023-O.webp",
                             Name = "Cuadro Madera Calado Mdf 5 Hojas Moderno Living Decorativo Color Degrade",
                             Price = 13999m
                         },
                         new
                         {
-                            ProductId = new Guid("e6f8267c-bc48-4e46-83e3-13b73749fae0"),
-                            CategoryId = 4,
+                            ProductId = new Guid("9cf937ed-b2aa-4a9f-8d98-dfdeb343d90c"),
+                            Category = 4,
                             Description = "Cortina Guirnalda Estrellas Luz Led Cálida Amarilla Efectos.",
                             Discount = 67,
-                            ImageLink = "https://http2.mlstatic.com/D_NQ_NP_817788-MLA73104183943_112023-O.webp",
+                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_817788-MLA73104183943_112023-O.webp",
                             Name = "Cortina Guirnalda Estrellas Luz Led Calida Amarilla Efectos",
                             Price = 29000m
                         },
                         new
                         {
-                            ProductId = new Guid("48d22cd0-0568-4877-9988-ea272f50ee9b"),
-                            CategoryId = 5,
+                            ProductId = new Guid("19a3cb30-10f4-4d87-8439-4d425bc1142c"),
+                            Category = 5,
                             Description = "Bienvenido a la tienda oficial de SanCor Bebé, donde podés comprar todos nuestros productos directo de fábrica, pagarlos online y recibirlos donde quieras de forma segura y confiable.",
-                            Discount = 0,
-                            ImageLink = "https://http2.mlstatic.com/D_NQ_NP_808805-MLA51087990624_082022-O.webp",
+                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_808805-MLA51087990624_082022-O.webp",
                             Name = "Biogaia Gotas Probioticas Suplemento Dietario X 5 Ml",
                             Price = 25814m
                         },
                         new
                         {
-                            ProductId = new Guid("7b4d5728-c23f-40fa-96b3-90af9073db17"),
-                            CategoryId = 5,
+                            ProductId = new Guid("6f86743b-2a56-4e91-b9d0-d494e2033239"),
+                            Category = 5,
                             Description = "El Aspirador Nasal Asistido Nuby es el aliado perfecto para cuidar la salud de tu bebé desde los primeros meses de vida.",
-                            Discount = 0,
-                            ImageLink = "https://http2.mlstatic.com/D_NQ_NP_661607-MLU72831502725_112023-O.webp",
+                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_661607-MLU72831502725_112023-O.webp",
                             Name = "Nuby Aspirador Nasal Asistido Con Boquilla Y Filtro Color Transparente",
                             Price = 12516m
                         },
                         new
                         {
-                            ProductId = new Guid("d6e071de-41cb-4806-9fb1-9d1c1e1b24e3"),
-                            CategoryId = 5,
+                            ProductId = new Guid("c849d857-79b7-43ba-8605-0550f077295e"),
+                            Category = 5,
                             Description = "KIT DE CUIDADO FACIAL COMPLETO.",
-                            Discount = 0,
-                            ImageLink = "https://http2.mlstatic.com/D_NQ_NP_614555-MLA48554874576_122021-O.webp",
+                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_614555-MLA48554874576_122021-O.webp",
                             Name = "Kit Limpieza Cuidado Facial Belleza Mascarilla Cepillo",
                             Price = 22999m
                         },
                         new
                         {
-                            ProductId = new Guid("f208b0b8-f8b2-45a9-b62e-90082f98e12f"),
-                            CategoryId = 5,
+                            ProductId = new Guid("c809c03b-e2e6-4fd7-83bb-a23551c81c01"),
+                            Category = 5,
                             Description = "Contenido 7gr",
-                            Discount = 0,
-                            ImageLink = "https://http2.mlstatic.com/D_NQ_NP_825714-MLU72831156837_112023-O.webp",
+                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_825714-MLU72831156837_112023-O.webp",
                             Name = "Corrector De Ojereas Artez Westerley Distr. Oficial",
                             Price = 7900m
                         },
                         new
                         {
-                            ProductId = new Guid("c993846d-5b00-4236-94e3-93ad7cc6548b"),
-                            CategoryId = 6,
+                            ProductId = new Guid("51ad5c3c-966c-4cef-ba10-5d6ba4caad3f"),
+                            Category = 6,
                             Description = "Adidas Argentum 19.",
-                            Discount = 0,
-                            ImageLink = "https://http2.mlstatic.com/D_NQ_NP_961577-MLA74277409609_012024-O.webp",
+                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_961577-MLA74277409609_012024-O.webp",
                             Name = "Pelota adidas Argentum 19 Liga Argentina Balon Oficial",
                             Price = 140000m
                         },
                         new
                         {
-                            ProductId = new Guid("f3c28ce8-fe38-4f0c-812b-cb770fe820a8"),
-                            CategoryId = 6,
+                            ProductId = new Guid("c4b42598-2ae2-4692-811c-1492a0115823"),
+                            Category = 6,
                             Description = "GUANTE ATTRAKT SOLID.",
-                            Discount = 0,
-                            ImageLink = "https://http2.mlstatic.com/D_NQ_NP_737373-MLA69694206154_052023-O.webp",
+                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_737373-MLA69694206154_052023-O.webp",
                             Name = "Guante Arquero Attrakt Solid Reusch Exclusivo",
                             Price = 43230m
                         },
                         new
                         {
-                            ProductId = new Guid("cb77cc39-631e-42c5-91d7-a3f871f9a62a"),
-                            CategoryId = 6,
+                            ProductId = new Guid("30aa880d-021e-4911-89b4-3619947c27fc"),
+                            Category = 6,
                             Description = "Edad recomendada: de 8 años a 120 años.",
-                            Discount = 0,
-                            ImageLink = "https://http2.mlstatic.com/D_NQ_NP_655528-MLU74053078727_012024-O.webp",
+                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_655528-MLU74053078727_012024-O.webp",
                             Name = "Destroza Este Diario Color - Keri Smith - Libro Del Fondo",
                             Price = 20200m
                         },
                         new
                         {
-                            ProductId = new Guid("25e512f6-5d8d-40cd-8b78-4622d7e0ad55"),
-                            CategoryId = 6,
+                            ProductId = new Guid("30d0e6a4-6f38-4baa-b371-8d7908762239"),
+                            Category = 6,
                             Description = "Soga de saltar de acero Speed Rope.",
                             Discount = 19,
-                            ImageLink = "https://http2.mlstatic.com/D_NQ_NP_783722-MLA70257450564_072023-O.webp",
+                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_783722-MLA70257450564_072023-O.webp",
                             Name = "Soga Para Saltar Aluminio Rulemanes/ Boxeo Fitness Crossfit",
                             Price = 14998m
                         },
                         new
                         {
-                            ProductId = new Guid("d390d80d-ddb2-46ce-b7ef-7f20672bd3a4"),
-                            CategoryId = 7,
+                            ProductId = new Guid("1888feeb-495f-4f58-802a-7eea3492f3e7"),
+                            Category = 7,
                             Description = "Helicóptero Dron Inteligente Sensorial Vuela Sube Y Baja.",
                             Discount = 31,
-                            ImageLink = "https://http2.mlstatic.com/D_NQ_NP_716599-MLU73126252000_122023-O.webp",
+                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_716599-MLU73126252000_122023-O.webp",
                             Name = "Helicoptero Dron Inteligente Sensorial Vuela Sube Y Baja Color Negro",
                             Price = 17990m
                         },
                         new
                         {
-                            ProductId = new Guid("37702151-44c8-4e0e-ba4d-5c10323a1f8b"),
-                            CategoryId = 7,
+                            ProductId = new Guid("e110e385-4c8c-450e-9814-34f7357066d6"),
+                            Category = 7,
                             Description = "Cocina para nenas nenes chicos infantil madera.",
                             Discount = 5,
-                            ImageLink = "https://http2.mlstatic.com/D_NQ_NP_611047-MLU74163663259_012024-O.webp",
+                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_611047-MLU74163663259_012024-O.webp",
                             Name = "Cocinita De Juguete Cocina Madera Infantil Juego Niños Niñas Color Marron",
                             Price = 34999m
                         },
                         new
                         {
-                            ProductId = new Guid("d640cc96-aba1-4a47-aca9-ec53f3da3f9c"),
-                            CategoryId = 7,
+                            ProductId = new Guid("f0bc59df-497e-4e9d-84c3-20ed61195b50"),
+                            Category = 7,
                             Description = "En sus distintas ediciones, la franquicia de Super Mario ha logrado combinar su estilo con modernos modos de juego que divierten y desafían constantemente a quienes juegan.",
-                            Discount = 0,
-                            ImageLink = "https://http2.mlstatic.com/D_NQ_NP_764820-MLU70610438351_072023-O.webp",
+                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_764820-MLU70610438351_072023-O.webp",
                             Name = "Mario Bros Wonder Nintendo Switch",
                             Price = 82999m
                         },
                         new
                         {
-                            ProductId = new Guid("3f199fa1-5b69-48df-8c1c-2510ce377f74"),
-                            CategoryId = 7,
+                            ProductId = new Guid("43e95f4c-d08b-4f0b-8076-0cc4cc283b66"),
+                            Category = 7,
                             Description = "Con este juego de Mario vas a disfrutar de horas de diversión y de nuevos desafíos que te permitirán mejorar como gamer.",
-                            Discount = 0,
-                            ImageLink = "https://http2.mlstatic.com/D_NQ_NP_740157-MLU72836514627_112023-O.webp",
+                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_740157-MLU72836514627_112023-O.webp",
                             Name = "Mario Odyssey Standard Edition Nintendo Switch Fisico",
                             Price = 79206m
                         },
                         new
                         {
-                            ProductId = new Guid("f08cd467-13f7-4915-ae55-146508201e67"),
-                            CategoryId = 8,
+                            ProductId = new Guid("0cc4dc2e-8652-49b9-b165-546f684775ce"),
+                            Category = 8,
                             Description = "Tableta Milka Chocolate Biscuit 300 gr",
-                            Discount = 0,
-                            ImageLink = "https://http2.mlstatic.com/D_NQ_NP_740928-MLA74220113425_012024-O.webp",
+                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_740928-MLA74220113425_012024-O.webp",
                             Name = "Tableta Milka Chocolate Biscuit 300 gr",
                             Price = 9999m
                         },
                         new
                         {
-                            ProductId = new Guid("6412766b-11db-4f2d-a167-ebca8e587d9d"),
-                            CategoryId = 8,
+                            ProductId = new Guid("38de84a3-f346-4e59-bba4-8a02ed823a9e"),
+                            Category = 8,
                             Description = "Pack de 6 latas de 354 mL cada una.",
-                            Discount = 0,
-                            ImageLink = "https://http2.mlstatic.com/D_NQ_NP_878966-MLU73885793875_012024-O.webp",
+                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_878966-MLU73885793875_012024-O.webp",
                             Name = "Lata De Pepsi Cola Gaseosa X 354ml Pack X6 Und",
                             Price = 4381.82m
                         },
                         new
                         {
-                            ProductId = new Guid("a5cb301d-dc34-4342-b014-e70d0dbc09e2"),
-                            CategoryId = 8,
+                            ProductId = new Guid("c37d1e85-0cf9-4850-9903-3d809bf4c438"),
+                            Category = 8,
                             Description = "Coca Cola Lata 354ml Original Gaseosa Pack X6 Latas.",
                             Discount = 5,
-                            ImageLink = "https://http2.mlstatic.com/D_NQ_NP_790516-MLU72637348139_112023-O.webp",
+                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_790516-MLU72637348139_112023-O.webp",
                             Name = "Coca Cola Lata 354ml Original Gaseosa Pack X6 Latas",
                             Price = 9005.29m
                         },
                         new
                         {
-                            ProductId = new Guid("8d6c3ee3-414c-4221-b95c-f209d990120f"),
-                            CategoryId = 8,
+                            ProductId = new Guid("615c0e5f-8cd9-48bf-9f5b-4ade9b72b46b"),
+                            Category = 8,
                             Description = "Milka Chocolate Oreo Max X 300 Gr.",
-                            Discount = 0,
-                            ImageLink = "https://http2.mlstatic.com/D_NQ_NP_816357-MLA74049228146_012024-O.webp",
+                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_816357-MLA74049228146_012024-O.webp",
                             Name = "Milka Chocolate Oreo Max X 300 Gr",
                             Price = 9999m
                         },
                         new
                         {
-                            ProductId = new Guid("d2ba9e7e-6a02-477b-aedc-03493713c1e3"),
-                            CategoryId = 9,
+                            ProductId = new Guid("348c7173-1a51-4219-adf5-6d3c7c2ae54c"),
+                            Category = 9,
                             Description = "Libro Hábitos Atómicos - James Clear - Booket.",
-                            Discount = 0,
-                            ImageLink = "https://http2.mlstatic.com/D_NQ_NP_673885-MLA54040457764_022023-O.webp",
+                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_673885-MLA54040457764_022023-O.webp",
                             Name = "Habitos Atomicos - James Clear - Booket",
                             Price = 14600m
                         },
                         new
                         {
-                            ProductId = new Guid("ce3e7701-3ebe-486f-8dd8-08bf37ef94a5"),
-                            CategoryId = 9,
+                            ProductId = new Guid("8259b9d6-ed88-4b6e-b755-f1d5c6902098"),
+                            Category = 9,
                             Description = "EL DUELO (BOLSILLO) - Gabriel Rolón.",
                             Discount = 10,
-                            ImageLink = "https://http2.mlstatic.com/D_NQ_NP_869330-MLU73121803273_112023-O.webp",
+                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_869330-MLU73121803273_112023-O.webp",
                             Name = "El duelo - Gabriel Rolon - Booket",
                             Price = 16000m
                         },
                         new
                         {
-                            ProductId = new Guid("7eb0a26a-7755-4448-8ccd-5757381a20cd"),
-                            CategoryId = 9,
+                            ProductId = new Guid("65bcd356-c8ae-4271-a72c-a938a328892b"),
+                            Category = 9,
                             Description = "Expedicion Matematica 6 - Claudia Broitman.",
                             Discount = 5,
-                            ImageLink = "https://http2.mlstatic.com/D_NQ_NP_800174-MLU73415445799_122023-O.webp",
+                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_800174-MLU73415445799_122023-O.webp",
                             Name = "Expedicion Matematica 6 - Claudia Broitman",
                             Price = 16700m
                         },
                         new
                         {
-                            ProductId = new Guid("9beafc1a-3934-4a3f-b9fc-391eb325433a"),
-                            CategoryId = 9,
+                            ProductId = new Guid("a1abb7be-5ce5-4be9-9ef8-75397da9d7b5"),
+                            Category = 9,
                             Description = "Como imposible y como quimera, como fin y también como imperativo, la idea de la felicidad nos interpela más que nunca en los tiempos que corren. “¿Cómo ser felices?”.",
-                            Discount = 0,
-                            ImageLink = "https://http2.mlstatic.com/D_NQ_NP_758457-MLU75135654463_032024-O.webp",
+                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_758457-MLU75135654463_032024-O.webp",
                             Name = "La Felicidad - Gabriel Rolon - Planeta",
                             Price = 17990m
                         },
                         new
                         {
-                            ProductId = new Guid("c5939b33-184c-4c0e-9674-7fdc46209d23"),
-                            CategoryId = 10,
+                            ProductId = new Guid("da2db184-0d9c-4a3e-a3db-e424ba1fff66"),
+                            Category = 10,
                             Description = "Sustrato Growmix 80Lts Multipro.",
                             Discount = 5,
-                            ImageLink = "https://http2.mlstatic.com/D_NQ_NP_817546-MLU75142995540_032024-O.webp",
+                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_817546-MLU75142995540_032024-O.webp",
                             Name = "GrowMix Profesional Multipro 80L",
                             Price = 19860m
                         },
                         new
                         {
-                            ProductId = new Guid("d2b5808b-435f-4731-b90b-ac82fbc23709"),
-                            CategoryId = 10,
+                            ProductId = new Guid("6a8ec914-3c20-4b1e-9c0f-824fe7683f3d"),
+                            Category = 10,
                             Description = "Mantener los espacios verdes de tu hogar ahora es más fácil, olvidate de cortes desprolijos y malezas.",
                             Discount = 36,
-                            ImageLink = "https://http2.mlstatic.com/D_NQ_NP_643769-MLU71619277093_092023-O.webp",
+                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_643769-MLU71619277093_092023-O.webp",
                             Name = "Desmalezadora A Explosion 52cc Potencia 1500w 2 Hp DESMA52CC",
                             Price = 127110m
                         },
                         new
                         {
-                            ProductId = new Guid("99f54b63-efca-46f0-bb24-4125c188ff87"),
-                            CategoryId = 10,
+                            ProductId = new Guid("74a8764d-9ace-4e92-87e5-a2b6cd328750"),
+                            Category = 10,
                             Description = "Potencia: 80 W.",
-                            Discount = 0,
-                            ImageLink = "https://http2.mlstatic.com/D_NQ_NP_870740-MLU72833533367_112023-O.webp",
+                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_870740-MLU72833533367_112023-O.webp",
                             Name = "Pistola Encoladora 80 W Para Barras De Silicona De 11,2 Mm",
                             Price = 9888m
                         },
                         new
                         {
-                            ProductId = new Guid("61d22a43-30eb-4152-bb7c-41d1aa2519cd"),
-                            CategoryId = 10,
+                            ProductId = new Guid("4ff0f5de-f141-4cf6-86e8-1bc590f2a0cb"),
+                            Category = 10,
                             Description = "La cinta doble faz Universal tesa® es una cinta adhesiva de papel muy versátil, ideal para fijar alfombras, o para la decoración en casa y bricolaje.",
-                            Discount = 0,
-                            ImageLink = "https://http2.mlstatic.com/D_NQ_NP_860188-MLA47568116839_092021-O.webp",
+                            ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_860188-MLA47568116839_092021-O.webp",
                             Name = "Cinta Doble Faz 50mm X 25m Pega Alfombra-bricolage Tesa Tape",
                             Price = 12000m
                         });
@@ -537,7 +515,7 @@ namespace AccessData.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SaleId"));
 
-                    b.Property<DateTime>("DateTime")
+                    b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
                     b.Property<decimal>("Subtotal")
@@ -559,60 +537,64 @@ namespace AccessData.Migrations
 
             modelBuilder.Entity("AccessData.DataBaseInfraestructure.Entities.SaleProduct", b =>
                 {
-                    b.Property<int>("SaleProductId")
+                    b.Property<int>("ShoppingCartId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SaleProductId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ShoppingCartId"));
 
-                    b.Property<int>("Discount")
+                    b.Property<int?>("Discount")
                         .HasColumnType("int");
 
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<Guid>("ProductId")
+                    b.Property<Guid>("Product")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
 
-                    b.Property<int?>("SaleId")
+                    b.Property<int>("Sale")
                         .HasColumnType("int");
 
-                    b.HasKey("SaleProductId");
+                    b.HasKey("ShoppingCartId");
 
-                    b.HasIndex("ProductId");
+                    b.HasIndex("Product");
 
-                    b.HasIndex("SaleId");
+                    b.HasIndex("Sale");
 
                     b.ToTable("SaleProduct");
                 });
 
             modelBuilder.Entity("AccessData.DataBaseInfraestructure.Entities.Product", b =>
                 {
-                    b.HasOne("AccessData.DataBaseInfraestructure.Entities.Category", "Category")
+                    b.HasOne("AccessData.DataBaseInfraestructure.Entities.Category", "category")
                         .WithMany("Products")
-                        .HasForeignKey("CategoryId")
+                        .HasForeignKey("Category")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Category");
+                    b.Navigation("category");
                 });
 
             modelBuilder.Entity("AccessData.DataBaseInfraestructure.Entities.SaleProduct", b =>
                 {
-                    b.HasOne("AccessData.DataBaseInfraestructure.Entities.Product", "Product")
+                    b.HasOne("AccessData.DataBaseInfraestructure.Entities.Product", "product")
                         .WithMany("SaleProduct")
-                        .HasForeignKey("ProductId")
+                        .HasForeignKey("Product")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("AccessData.DataBaseInfraestructure.Entities.Sale", null)
+                    b.HasOne("AccessData.DataBaseInfraestructure.Entities.Sale", "sale")
                         .WithMany("SaleProduct")
-                        .HasForeignKey("SaleId");
+                        .HasForeignKey("Sale")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.Navigation("Product");
+                    b.Navigation("product");
+
+                    b.Navigation("sale");
                 });
 
             modelBuilder.Entity("AccessData.DataBaseInfraestructure.Entities.Category", b =>

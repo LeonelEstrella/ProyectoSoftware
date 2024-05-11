@@ -12,10 +12,10 @@ namespace AccessData.Queries
         }
 
         public List<Product> RetrieveProducts(string categoryName)
-        {       
+        {
             var producCategorytList = _context.Product
                     .Join(
-                    _context.Category.Where( c => c.Name == categoryName ),
+                    _context.Category.Where(c => c.Name == categoryName),
                     product => product.Category,
                     category => category.CategoryId,
                     (product, category) => new Product
@@ -31,6 +31,11 @@ namespace AccessData.Queries
 
             return producCategorytList;
 
+        }
+
+        public Product GetProductByName(string productName) 
+        {
+            return _context.Product.FirstOrDefault(p => p.Name.StartsWith(productName));
         }
     }
 }

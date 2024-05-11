@@ -1,58 +1,49 @@
 ﻿using AccessData.DataBaseInfraestructure.Entities;
 using Application.Interfaces;
-using Application.Models;
 
 namespace Application.Util
 {
     public class SaleSelectedProducts : ISaleSelectedProducts
     {
-        private IList<ProductSaledDTO> _bougthProducts;
-        private readonly IPickProduct _pickProduct;
+        private const decimal TAXES = 1.21m;
         private readonly ISalesMathematics _salesMathematics;
-        private Sale _sale;
         private readonly ISaleService _saleService;
 
-        public SaleSelectedProducts(IList<ProductSaledDTO> bougthProducts, IPickProduct pickProduct, ISalesMathematics salesMathematics, Sale sale, ISaleService saleService)
+        public SaleSelectedProducts(ISalesMathematics salesMathematics, ISaleService saleService)
         {
-            _bougthProducts = bougthProducts;
-            _pickProduct = pickProduct;
             _salesMathematics = salesMathematics;
-            _sale = sale;
             _saleService = saleService;
         }
 
-        public Sale SaleAProduct(int selectedCategoryIndex, List<ICategoryOptions.Categories> categoryValues, List<Product> productList) 
-        {
-            var boughtProductsBefore = _bougthProducts.Count;
-            if (selectedCategoryIndex != 0)
-
+        public (Sale, Boolean) SaleAProduct(Dictionary<Product, int> productList) 
+        {      
+            var saleCaculated = _salesMathematics.CalculateSale(productList);
+                
+            var sale = new Sale
             {
-                _bougthProducts = _pickProduct.AddProductToShoppingCart(productList);
-            }
-
-            if (_bougthProducts.Count > boughtProductsBefore)
+                Date = DateTime.Now,
+                SaleProduct = new List<SaleProduct>()
+            };
+            foreach (var kvp in productList)
             {
-                var saleCaculated = _salesMathematics.CalculateSale(_bougthProducts[_bougthProducts.Count - 1]);
-                _sale.Subtotal += saleCaculated.SubTotal;
-                _sale.TotalDiscount += saleCaculated.TotalDiscount;
-                _sale.TotalPay += saleCaculated.TotalPay;
-            }
-
-            if (selectedCategoryIndex == 0 && _bougthProducts.Count > 0)
-            {                    
-                foreach (var product in _bougthProducts)
+                Product product = kvp.Key;
+                int quantity = kvp.Value;
+                sale.SaleProduct.Add(new SaleProduct
                 {
-                    _sale.SaleProduct.Add(new SaleProduct
-                    {
-                        Product = product.ProductId,
-                        Quantity = product.Quantity,
-                        Price = product.Price,
-                        Discount = product.Discount
-                    });
-                }
-                _sale = _saleService.RegisterSale(_sale); 
+                    Product = product.ProductId,
+                    Quantity = quantity,
+                    Price = product.Price,
+                    Discount = product.Discount
+                });
             }
-            return _sale;
+
+            sale.Subtotal = saleCaculated.SubTotal;
+            sale.TotalDiscount = saleCaculated.TotalDiscount;
+            sale.Taxes = TAXES;
+            sale.TotalPay = saleCaculated.TotalPay;
+
+            sale = _saleService.RegisterSale(sale);
+            return (sale, true);
         }
     }
 }

@@ -4,6 +4,8 @@ namespace RetailStore.Interfaces
 {
     public interface IShowProducts
     {
-        List<Product> ShowProductList(string categoryName, int selectedCategoryIndex);
+        Dictionary<Product, int> SelectProduct(string categoryName, int selectedCategoryIndex);
+
+        int SelectProductAmount();
     }
 }

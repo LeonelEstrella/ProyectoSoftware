@@ -5,12 +5,6 @@ namespace AccessData.DataBaseInfraestructure.Entities
 {
     public class Sale
     {
-
-        public Sale()
-        {
-            SaleProduct = new List<SaleProduct>();
-        }
-
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int SaleId { get; set; }
@@ -28,7 +22,7 @@ namespace AccessData.DataBaseInfraestructure.Entities
         public decimal Taxes { get; set; }
 
         [Required]
-        public DateTime DateTime { get; set; }
+        public DateTime Date { get; set; }
         public ICollection<SaleProduct> SaleProduct { get; set; }
     }
 }

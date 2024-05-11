@@ -11,7 +11,7 @@ namespace RetailStore.Util
             Console.WriteLine("Subtotal: $" + Convert.ToDouble(sale.Subtotal));
             Console.WriteLine("Descuento total: $" + Convert.ToDouble(sale.TotalDiscount));
             Console.WriteLine("Impuesto por producto: " + sale.Taxes);
-            Console.WriteLine("Fecha de la compra: " + sale.DateTime);
+            Console.WriteLine("Fecha de la compra: " + sale.Date);
             Console.WriteLine();
         }
     }
