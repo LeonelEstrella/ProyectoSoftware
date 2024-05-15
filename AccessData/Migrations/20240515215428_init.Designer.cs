@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AccessData.Migrations
 {
     [DbContext(typeof(RetailStoreDBContext))]
-    [Migration("20240511000052_init")]
+    [Migration("20240515215428_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -129,7 +129,7 @@ namespace AccessData.Migrations
                     b.HasData(
                         new
                         {
-                            ProductId = new Guid("ab0a6e94-beeb-40c0-a23f-81e46d5dbc63"),
+                            ProductId = new Guid("41f6b31a-6722-40d7-889e-b4dd1c743e9c"),
                             Category = 1,
                             Description = "Disfrutá de tus alimentos frescos y almacenalos de manera práctica y cómoda en la heladera Drean, la protagonista de la cocina.",
                             Discount = 31,
@@ -139,7 +139,7 @@ namespace AccessData.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("2b15a38b-b85f-4f2d-9f24-b08161c64222"),
+                            ProductId = new Guid("1822d79b-623e-49df-a075-5268800f8802"),
                             Category = 1,
                             Description = "Únicamente necesita que se introduzcan los productos de limpieza y se elija el programa deseado.",
                             Discount = 39,
@@ -149,7 +149,7 @@ namespace AccessData.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("46ae9ac6-d0c7-48d5-b333-adf7040f5e4f"),
+                            ProductId = new Guid("4d181baf-8306-4059-9c95-4f9f98928ec0"),
                             Category = 1,
                             Description = "Marca líder mundial en la comercialización de electrodomésticos que orienta su trabajo en la tecnología, el diseño y la innovación para mejorar la calidad de vida.",
                             Discount = 47,
@@ -159,7 +159,7 @@ namespace AccessData.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("9f6adbe6-1371-477f-986c-da1b5d84b324"),
+                            ProductId = new Guid("d06500be-46ae-40ff-87d8-6b1ff39bb12b"),
                             Category = 1,
                             Description = "Freidora de Aire Gadnic F4.0 Sin Aceite 4Lts Digital",
                             ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_862380-MLU74244415875_012024-O.webp",
@@ -168,7 +168,7 @@ namespace AccessData.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("ad0ba7eb-0f7e-4aca-b3d8-6950bd12ec4d"),
+                            ProductId = new Guid("c547282e-8e21-41f7-abc9-51e3d95283c7"),
                             Category = 2,
                             Description = "El Robot de limpieza ATMA facilita la tarea de mantener los pisos impecables, combinando las funciones de aspirar y trapear simultáneamente.",
                             Discount = 19,
@@ -178,7 +178,7 @@ namespace AccessData.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("1c8ec55a-6672-4fe7-a4d2-e6d0109954e5"),
+                            ProductId = new Guid("b5362955-c42a-4ec3-b2e6-bd3eb684f7ba"),
                             Category = 2,
                             Description = "Con tu consola Switch tendrás entretenimiento asegurado todos los días. Su tecnología fue creada para poner nuevos retos tanto a jugadores principiantes como expertos. ",
                             ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_803086-MLA47920649105_102021-O.webp",
@@ -187,7 +187,7 @@ namespace AccessData.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("b4de373e-55ee-40de-ad73-35258255dc3e"),
+                            ProductId = new Guid("26f59a09-948e-4f9d-87d3-cbd7273c1d4c"),
                             Category = 2,
                             Description = "Cargador Móvil Gadnic con LED Indicador de Batería 25000 mAh",
                             ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_639848-MLU73345299871_122023-O.webp",
@@ -196,7 +196,7 @@ namespace AccessData.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("a100b778-9167-499c-af3f-fa298c26a94b"),
+                            ProductId = new Guid("97d05cb5-25b2-4cf6-9412-2e1df51bf06c"),
                             Category = 2,
                             Description = "Google TV de Philips le ofrece el contenido que desea, cuando lo desee. Puede personalizar su pantalla principal para mostrar sus aplicaciones favoritas.",
                             Discount = 11,
@@ -206,7 +206,7 @@ namespace AccessData.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("480318c8-cdf1-40b6-a406-b5ef540aae7a"),
+                            ProductId = new Guid("aff8795c-be0d-4dc0-8493-4b9e09807fde"),
                             Category = 3,
                             Description = "PULSERA DE ACERO QUIRURGICO 2 EN 1",
                             ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_727752-MLA47723827894_102021-O.webp",
@@ -215,7 +215,7 @@ namespace AccessData.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("66dbd775-b9bb-4757-b91e-7a7650937640"),
+                            ProductId = new Guid("6932bc98-986a-4254-9ba9-955841fba00e"),
                             Category = 3,
                             Description = "Shoter premium shoe cleaner es un producto innovador para la limpieza de calzado urbano y deportivo.",
                             ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_659147-MLA40000388003_122019-O.webp",
@@ -224,7 +224,7 @@ namespace AccessData.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("73ae89c4-f49b-4e09-b2ac-f1c6d981d9fc"),
+                            ProductId = new Guid("f0fd9a1c-8e98-4c1d-81aa-b37c8778f8cd"),
                             Category = 3,
                             Description = "PANTALON CARGO JOGGER 4 BOLSILLOS Y 2 SOLAPAS TRASERAS DE GABARDINA.",
                             Discount = 10,
@@ -234,7 +234,7 @@ namespace AccessData.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("e16ab321-b55f-413e-87a3-a84a05700896"),
+                            ProductId = new Guid("fe774203-4177-4b6a-8b42-70ce3962ddc5"),
                             Category = 3,
                             Description = "Bolso Wilson 65.150005.",
                             Discount = 11,
@@ -244,7 +244,7 @@ namespace AccessData.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("60dd49a4-9f9f-4256-a5dd-e6ffd17e0479"),
+                            ProductId = new Guid("b6853d7c-303d-4851-93f4-e39fd405ae9c"),
                             Category = 4,
                             Description = "Pileta Encastrable HARDEST Modelo HQ-113XT.",
                             ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_760812-MLA54507511656_032023-O.webp",
@@ -253,7 +253,7 @@ namespace AccessData.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("fa22f6d2-b40d-4afe-abf9-b9d0d337504c"),
+                            ProductId = new Guid("2fe48b87-bb6d-462f-8ab7-5a23aeb32ef6"),
                             Category = 4,
                             Description = "TENDER DE PIE ACERO CON ALAS.",
                             Discount = 15,
@@ -263,7 +263,7 @@ namespace AccessData.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("0d190a37-e2f8-47bd-9201-febf8fa639a0"),
+                            ProductId = new Guid("33f75816-4d97-4b2b-8e00-d2891067be1e"),
                             Category = 4,
                             Description = "Cuadro moderno decorativo calado sobre madera mdf ideal para hogar casa oficina living ambientes minimalistas degrade.",
                             Discount = 5,
@@ -273,7 +273,7 @@ namespace AccessData.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("9cf937ed-b2aa-4a9f-8d98-dfdeb343d90c"),
+                            ProductId = new Guid("4488ba96-0b5b-4d8a-a216-0cc40a1f7157"),
                             Category = 4,
                             Description = "Cortina Guirnalda Estrellas Luz Led Cálida Amarilla Efectos.",
                             Discount = 67,
@@ -283,7 +283,7 @@ namespace AccessData.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("19a3cb30-10f4-4d87-8439-4d425bc1142c"),
+                            ProductId = new Guid("86719fab-ae49-43d5-afba-71ea0f071a7b"),
                             Category = 5,
                             Description = "Bienvenido a la tienda oficial de SanCor Bebé, donde podés comprar todos nuestros productos directo de fábrica, pagarlos online y recibirlos donde quieras de forma segura y confiable.",
                             ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_808805-MLA51087990624_082022-O.webp",
@@ -292,7 +292,7 @@ namespace AccessData.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("6f86743b-2a56-4e91-b9d0-d494e2033239"),
+                            ProductId = new Guid("45bdcaf6-4129-4f98-b997-b6342da33d6c"),
                             Category = 5,
                             Description = "El Aspirador Nasal Asistido Nuby es el aliado perfecto para cuidar la salud de tu bebé desde los primeros meses de vida.",
                             ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_661607-MLU72831502725_112023-O.webp",
@@ -301,7 +301,7 @@ namespace AccessData.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("c849d857-79b7-43ba-8605-0550f077295e"),
+                            ProductId = new Guid("22147730-8261-48c1-95a0-45535d3949cb"),
                             Category = 5,
                             Description = "KIT DE CUIDADO FACIAL COMPLETO.",
                             ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_614555-MLA48554874576_122021-O.webp",
@@ -310,7 +310,7 @@ namespace AccessData.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("c809c03b-e2e6-4fd7-83bb-a23551c81c01"),
+                            ProductId = new Guid("2611fe25-31d0-4a63-b0bf-28b66fe169c2"),
                             Category = 5,
                             Description = "Contenido 7gr",
                             ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_825714-MLU72831156837_112023-O.webp",
@@ -319,7 +319,7 @@ namespace AccessData.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("51ad5c3c-966c-4cef-ba10-5d6ba4caad3f"),
+                            ProductId = new Guid("a8eb89a3-6ed5-4e8f-b20d-94ca83208702"),
                             Category = 6,
                             Description = "Adidas Argentum 19.",
                             ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_961577-MLA74277409609_012024-O.webp",
@@ -328,7 +328,7 @@ namespace AccessData.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("c4b42598-2ae2-4692-811c-1492a0115823"),
+                            ProductId = new Guid("bd6499a9-e022-4616-9980-7240c6f959ba"),
                             Category = 6,
                             Description = "GUANTE ATTRAKT SOLID.",
                             ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_737373-MLA69694206154_052023-O.webp",
@@ -337,7 +337,7 @@ namespace AccessData.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("30aa880d-021e-4911-89b4-3619947c27fc"),
+                            ProductId = new Guid("745cebaa-bf67-41e8-a89d-08da101c1d1e"),
                             Category = 6,
                             Description = "Edad recomendada: de 8 años a 120 años.",
                             ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_655528-MLU74053078727_012024-O.webp",
@@ -346,7 +346,7 @@ namespace AccessData.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("30d0e6a4-6f38-4baa-b371-8d7908762239"),
+                            ProductId = new Guid("52eb43ce-8ad7-45f4-b7b8-4e7c3f1fe804"),
                             Category = 6,
                             Description = "Soga de saltar de acero Speed Rope.",
                             Discount = 19,
@@ -356,7 +356,7 @@ namespace AccessData.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("1888feeb-495f-4f58-802a-7eea3492f3e7"),
+                            ProductId = new Guid("dc026789-b49e-44ac-9e64-e38d932fec39"),
                             Category = 7,
                             Description = "Helicóptero Dron Inteligente Sensorial Vuela Sube Y Baja.",
                             Discount = 31,
@@ -366,7 +366,7 @@ namespace AccessData.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("e110e385-4c8c-450e-9814-34f7357066d6"),
+                            ProductId = new Guid("47424c81-7394-42fb-89ba-55b74e2f67e1"),
                             Category = 7,
                             Description = "Cocina para nenas nenes chicos infantil madera.",
                             Discount = 5,
@@ -376,7 +376,7 @@ namespace AccessData.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("f0bc59df-497e-4e9d-84c3-20ed61195b50"),
+                            ProductId = new Guid("f9f96714-1ef0-4ada-9e81-9765fa51877a"),
                             Category = 7,
                             Description = "En sus distintas ediciones, la franquicia de Super Mario ha logrado combinar su estilo con modernos modos de juego que divierten y desafían constantemente a quienes juegan.",
                             ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_764820-MLU70610438351_072023-O.webp",
@@ -385,7 +385,7 @@ namespace AccessData.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("43e95f4c-d08b-4f0b-8076-0cc4cc283b66"),
+                            ProductId = new Guid("ea01723c-97ff-4504-84c5-8185897c1dcd"),
                             Category = 7,
                             Description = "Con este juego de Mario vas a disfrutar de horas de diversión y de nuevos desafíos que te permitirán mejorar como gamer.",
                             ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_740157-MLU72836514627_112023-O.webp",
@@ -394,7 +394,7 @@ namespace AccessData.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("0cc4dc2e-8652-49b9-b165-546f684775ce"),
+                            ProductId = new Guid("902c19dc-f776-49df-86db-5c07f1daa587"),
                             Category = 8,
                             Description = "Tableta Milka Chocolate Biscuit 300 gr",
                             ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_740928-MLA74220113425_012024-O.webp",
@@ -403,7 +403,7 @@ namespace AccessData.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("38de84a3-f346-4e59-bba4-8a02ed823a9e"),
+                            ProductId = new Guid("8312e850-b271-4f85-9a79-312876b3163b"),
                             Category = 8,
                             Description = "Pack de 6 latas de 354 mL cada una.",
                             ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_878966-MLU73885793875_012024-O.webp",
@@ -412,7 +412,7 @@ namespace AccessData.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("c37d1e85-0cf9-4850-9903-3d809bf4c438"),
+                            ProductId = new Guid("c51c2a6a-e7ed-4919-a934-6c40f721f189"),
                             Category = 8,
                             Description = "Coca Cola Lata 354ml Original Gaseosa Pack X6 Latas.",
                             Discount = 5,
@@ -422,7 +422,7 @@ namespace AccessData.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("615c0e5f-8cd9-48bf-9f5b-4ade9b72b46b"),
+                            ProductId = new Guid("2783c4dc-d92d-43c4-ae2b-b54542a2627a"),
                             Category = 8,
                             Description = "Milka Chocolate Oreo Max X 300 Gr.",
                             ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_816357-MLA74049228146_012024-O.webp",
@@ -431,7 +431,7 @@ namespace AccessData.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("348c7173-1a51-4219-adf5-6d3c7c2ae54c"),
+                            ProductId = new Guid("8b489f2b-cb70-4a43-9402-884f2fdf8a34"),
                             Category = 9,
                             Description = "Libro Hábitos Atómicos - James Clear - Booket.",
                             ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_673885-MLA54040457764_022023-O.webp",
@@ -440,7 +440,7 @@ namespace AccessData.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("8259b9d6-ed88-4b6e-b755-f1d5c6902098"),
+                            ProductId = new Guid("3a9df8f1-bc21-4fe5-b8dc-14a73e6fa98e"),
                             Category = 9,
                             Description = "EL DUELO (BOLSILLO) - Gabriel Rolón.",
                             Discount = 10,
@@ -450,7 +450,7 @@ namespace AccessData.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("65bcd356-c8ae-4271-a72c-a938a328892b"),
+                            ProductId = new Guid("34c89214-3ceb-45d8-a707-1e739f01bd9d"),
                             Category = 9,
                             Description = "Expedicion Matematica 6 - Claudia Broitman.",
                             Discount = 5,
@@ -460,7 +460,7 @@ namespace AccessData.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("a1abb7be-5ce5-4be9-9ef8-75397da9d7b5"),
+                            ProductId = new Guid("838cd3e4-2464-4ed3-8949-daf18136f53a"),
                             Category = 9,
                             Description = "Como imposible y como quimera, como fin y también como imperativo, la idea de la felicidad nos interpela más que nunca en los tiempos que corren. “¿Cómo ser felices?”.",
                             ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_758457-MLU75135654463_032024-O.webp",
@@ -469,7 +469,7 @@ namespace AccessData.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("da2db184-0d9c-4a3e-a3db-e424ba1fff66"),
+                            ProductId = new Guid("1753bd4c-94d8-421d-95a8-ca5b236dea65"),
                             Category = 10,
                             Description = "Sustrato Growmix 80Lts Multipro.",
                             Discount = 5,
@@ -479,7 +479,7 @@ namespace AccessData.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("6a8ec914-3c20-4b1e-9c0f-824fe7683f3d"),
+                            ProductId = new Guid("4928a734-cee8-4d05-bc97-ef1bd52a687f"),
                             Category = 10,
                             Description = "Mantener los espacios verdes de tu hogar ahora es más fácil, olvidate de cortes desprolijos y malezas.",
                             Discount = 36,
@@ -489,7 +489,7 @@ namespace AccessData.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("74a8764d-9ace-4e92-87e5-a2b6cd328750"),
+                            ProductId = new Guid("0c498232-2c84-458d-a78c-807c9acc1f28"),
                             Category = 10,
                             Description = "Potencia: 80 W.",
                             ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_870740-MLU72833533367_112023-O.webp",
@@ -498,7 +498,7 @@ namespace AccessData.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("4ff0f5de-f141-4cf6-86e8-1bc590f2a0cb"),
+                            ProductId = new Guid("428e5585-d6fa-4838-8db7-c2aeef9555a5"),
                             Category = 10,
                             Description = "La cinta doble faz Universal tesa® es una cinta adhesiva de papel muy versátil, ideal para fijar alfombras, o para la decoración en casa y bricolaje.",
                             ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_860188-MLA47568116839_092021-O.webp",

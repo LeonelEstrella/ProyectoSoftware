@@ -6,7 +6,7 @@ namespace RetailStore.Util
     {
         public static void ShowFinishedSaleMessage(Sale sale)
         {
-            Console.WriteLine("Muchas gracias por su compra!");
+            Console.WriteLine("Muchas gracias por su compra! \n");
             Console.WriteLine("Total a pagar: $" + Convert.ToDouble(sale.TotalPay));
             Console.WriteLine("Subtotal: $" + Convert.ToDouble(sale.Subtotal));
             Console.WriteLine("Descuento total: $" + Convert.ToDouble(sale.TotalDiscount));

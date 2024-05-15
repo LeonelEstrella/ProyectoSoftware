@@ -19,7 +19,7 @@ ISaleService saleService = new SaleService(registerSaleQueries, productQueries);
 SaleInformation saleInformation = new SaleInformation();
 ISalesMathematics salesMathematics = new SalesMathematics(saleInformation);
 ISaleSelectedProducts registerSale = new SaleSelectedProducts(salesMathematics, saleService);
-IShowProducts showProducts = new SelectProductFromList(productService);
+ISelectProductFromList showProducts = new SelectProductFromList(productService);
 
 IMenuOption[] menuOptions =
         [

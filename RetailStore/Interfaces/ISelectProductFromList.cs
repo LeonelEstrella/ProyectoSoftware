@@ -2,7 +2,7 @@
 
 namespace RetailStore.Interfaces
 {
-    public interface IShowProducts
+    public interface ISelectProductFromList
     {
         Dictionary<Product, int> SelectProduct(string categoryName, int selectedCategoryIndex);
 

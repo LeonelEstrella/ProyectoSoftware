@@ -16,10 +16,10 @@ namespace AccessData.DataBaseInfraestructure.Entities
 
         [Required]
         public decimal Price { get; set; }
-        public int? Discount { get; set; }
 
         [Required]
         public int Category { get; set; }
+        public int? Discount { get; set; }
         public string? ImageUrl { get; set; }
 
         [ForeignKey("Category")]

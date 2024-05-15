@@ -9,10 +9,10 @@ namespace RetailStore.MenuBuilder.Classes
     {
         private readonly ISaleSelectedProducts _registerSale;
         private readonly IList<ICategoryOptions.Categories> _categoryValues;
-        private readonly IShowProducts _showProducts;
+        private readonly ISelectProductFromList _showProducts;
         private readonly IProductDictionary _productDictionary;
 
-        public ShowOptions(ISaleSelectedProducts registerSale, IList<ICategoryOptions.Categories> categoryValues, IShowProducts showProducts, IProductDictionary productDictionary)
+        public ShowOptions(ISaleSelectedProducts registerSale, IList<ICategoryOptions.Categories> categoryValues, ISelectProductFromList showProducts, IProductDictionary productDictionary)
         {
             _registerSale = registerSale;
             _categoryValues = categoryValues;
@@ -40,6 +40,7 @@ namespace RetailStore.MenuBuilder.Classes
                         if(productList.Count == 0)
                         {
                             Console.WriteLine("Se finalizó la compra sin ningún producto en el carrito.");
+                            finishBuy = true;
                         }
                         else
                         {
